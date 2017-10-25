@@ -31,6 +31,8 @@ import android.widget.EditText;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
+import com.example.android.networkconnect.filechooser.FileExplorerActivity;
+
 /**
  * Sample Activity demonstrating how to connect to the network and fetch raw
  * HTML. It uses a Fragment that encapsulates the network operations on an AsyncTask.
@@ -41,6 +43,7 @@ public class MainActivity extends FragmentActivity  {
 
     private Button mButtonToDownLoadActivity;
     private Button mButtonToGetStreamingActivity;
+    private Button mButtonToFileChooser;
     private View.OnClickListener clkLstnr =new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -52,6 +55,10 @@ public class MainActivity extends FragmentActivity  {
                 case R.id.button_STREAM:
                     Intent mIntentStream = new Intent(getApplicationContext(), GetStreamActivity.class);
                     startActivity(mIntentStream);
+                    break;
+                case R.id.button_filechooser:
+                    Intent mIntentFileChoose= new Intent(getApplicationContext(), FileExplorerActivity.class);
+                    startActivity(mIntentFileChoose);
                     break;
             }
 
@@ -68,6 +75,8 @@ public class MainActivity extends FragmentActivity  {
         mButtonToDownLoadActivity.setOnClickListener(clkLstnr);
         mButtonToGetStreamingActivity = (Button) findViewById(R.id.button_STREAM);
         mButtonToGetStreamingActivity.setOnClickListener(clkLstnr);
+        mButtonToFileChooser = (Button) findViewById(R.id.button_filechooser);
+        mButtonToFileChooser.setOnClickListener(clkLstnr);
     }
 
     @Override
