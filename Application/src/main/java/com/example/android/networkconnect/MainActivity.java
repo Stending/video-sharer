@@ -50,6 +50,8 @@ public class MainActivity extends FragmentActivity  {
                     startActivity(mIntent);
                     break;
                 case R.id.button_STREAM:
+                    Intent mIntentStream = new Intent(getApplicationContext(), GetStreamActivity.class);
+                    startActivity(mIntentStream);
                     break;
             }
 
