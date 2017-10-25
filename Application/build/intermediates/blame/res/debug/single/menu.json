@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/build/intermediates/res/merged/debug/menu/get_stream_main.xml",
+        "source": "/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/src/main/res/menu/get_stream_main.xml"
+    },
+    {
         "merged": "/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/build/intermediates/res/merged/debug/menu/dl_and_view_main.xml",
         "source": "/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/src/main/res/menu/dl_and_view_main.xml"
     },
