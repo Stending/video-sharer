@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/build/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
+        "source": "/home/fauxmacbook/.android/build-cache/5c76309a4f6678060e81c300bc0617dda96ffde2/output/res/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/build/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
+        "source": "/home/fauxmacbook/.android/build-cache/5c76309a4f6678060e81c300bc0617dda96ffde2/output/res/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/build/intermediates/res/merged/debug/layout-v21/notification_action.xml",
+        "source": "/home/fauxmacbook/.android/build-cache/5c76309a4f6678060e81c300bc0617dda96ffde2/output/res/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/build/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
+        "source": "/home/fauxmacbook/.android/build-cache/5c76309a4f6678060e81c300bc0617dda96ffde2/output/res/layout-v21/notification_template_custom_big.xml"
+    }
+]

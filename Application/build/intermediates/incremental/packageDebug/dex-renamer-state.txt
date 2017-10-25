@@ -1,0 +1,7 @@
+#Wed Oct 25 14:05:20 CEST 2017
+base.0=/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_bf8674ff03b49c4da15f6be025c30f494b8b98f5
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_4033688a4b3d44b5e8f4e2b67f2750295127c737/classes.dex
+base.1=/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_4033688a4b3d44b5e8f4e2b67f2750295127c737
+file.0=/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_bf8674ff03b49c4da15f6be025c30f494b8b98f5/classes.dex

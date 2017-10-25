@@ -1,0 +1,953 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 32505856 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2627), pid=16047, tid=0x00007f36f78f8700
+#
+# JRE version: OpenJDK Runtime Environment (8.0_112-b06) (build 1.8.0_112-release-b06)
+# Java VM: OpenJDK 64-Bit Server VM (25.112-b06 mixed mode linux-amd64 compressed oops)
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f371c077800):  VMThread [stack: 0x00007f36f77f8000,0x00007f36f78f9000] [id=16055]
+
+Stack: [0x00007f36f77f8000,0x00007f36f78f9000],  sp=0x00007f36f78f74c0,  free space=1021k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0x9e465d]  VMError::report_and_die()+0x15d
+V  [libjvm.so+0x4b6ada]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*)+0x8a
+V  [libjvm.so+0x84c860]  os::pd_commit_memory(char*, unsigned long, unsigned long, bool)+0xf0
+V  [libjvm.so+0x84737f]  os::commit_memory(char*, unsigned long, unsigned long, bool)+0x1f
+V  [libjvm.so+0x8bd3db]  PSVirtualSpace::expand_by(unsigned long)+0x5b
+V  [libjvm.so+0x8be050]  PSYoungGen::resize_generation(unsigned long, unsigned long)+0xb0
+V  [libjvm.so+0x8be36b]  PSYoungGen::resize(unsigned long, unsigned long)+0x1b
+V  [libjvm.so+0x8baa5c]  PSScavenge::invoke_no_policy()+0xdac
+V  [libjvm.so+0x8bb238]  PSScavenge::invoke()+0x38
+V  [libjvm.so+0x86fcf3]  ParallelScavengeHeap::failed_mem_allocate(unsigned long)+0x63
+V  [libjvm.so+0x9e6124]  VM_ParallelGCFailedAllocation::doit()+0x84
+V  [libjvm.so+0x9ea537]  VM_Operation::evaluate()+0x47
+V  [libjvm.so+0x9e8ff8]  VMThread::evaluate_operation(VM_Operation*)+0x2c8
+V  [libjvm.so+0x9e9479]  VMThread::loop()+0x219
+V  [libjvm.so+0x9e98c2]  VMThread::run()+0x72
+V  [libjvm.so+0x849c82]  java_start(Thread*)+0xf2
+
+VM_Operation (0x00007f36cc6f00a0): ParallelGCFailedAllocation, mode: safepoint, requested by thread 0x00007f36b125f800
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007f36b125f800 JavaThread "Memory manager" [_thread_blocked, id=16078, stack(0x00007f36cc5f1000,0x00007f36cc6f2000)]
+  0x00007f36b00b5000 JavaThread "File lock request listener" [_thread_in_native, id=16075, stack(0x00007f36f4b74000,0x00007f36f4c75000)]
+  0x00007f36b00a5000 JavaThread "Cache worker for file hash cache (/home/fauxmacbook/.gradle/caches/3.4.1/fileHashes)" [_thread_blocked, id=16074, stack(0x00007f36f4c75000,0x00007f36f4d76000)]
+  0x00007f36b0007800 JavaThread "Asynchronous log dispatcher for DefaultDaemonConnection: socket connection from /127.0.0.1:38868 to /127.0.0.1:39032" [_thread_blocked, id=16072, stack(0x00007f36f5077000,0x00007f36f5178000)]
+  0x00007f36c4008800 JavaThread "Daemon worker" [_thread_blocked, id=16069, stack(0x00007f36f5178000,0x00007f36f5279000)]
+  0x00007f36c400c000 JavaThread "Cancel handler" [_thread_blocked, id=16068, stack(0x00007f36f5279000,0x00007f36f537a000)]
+  0x00007f36c4003800 JavaThread "Handler for socket connection from /127.0.0.1:38868 to /127.0.0.1:39032" [_thread_in_native, id=16067, stack(0x00007f36f537a000,0x00007f36f547b000)]
+  0x00007f36c8016000 JavaThread "Daemon" [_thread_blocked, id=16066, stack(0x00007f36f547b000,0x00007f36f557c000)]
+  0x00007f371cd41000 JavaThread "Daemon periodic checks" [_thread_blocked, id=16065, stack(0x00007f36f557c000,0x00007f36f567d000)]
+  0x00007f371cd0b800 JavaThread "Incoming local TCP Connector on port 38868" [_thread_in_native, id=16064, stack(0x00007f36f5884000,0x00007f36f5985000)]
+  0x00007f371c0c0000 JavaThread "Service Thread" daemon [_thread_blocked, id=16062, stack(0x00007f36f6e14000,0x00007f36f6f15000)]
+  0x00007f371c0bd000 JavaThread "C1 CompilerThread2" daemon [_thread_blocked, id=16061, stack(0x00007f36f6f15000,0x00007f36f7016000)]
+  0x00007f371c0bb000 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=16060, stack(0x00007f36f7016000,0x00007f36f7117000)]
+  0x00007f371c0b8000 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=16059, stack(0x00007f36f7117000,0x00007f36f7218000)]
+  0x00007f371c0b6800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=16058, stack(0x00007f36f7218000,0x00007f36f7319000)]
+  0x00007f371c083800 JavaThread "Finalizer" daemon [_thread_blocked, id=16057, stack(0x00007f36f75f6000,0x00007f36f76f7000)]
+  0x00007f371c07f000 JavaThread "Reference Handler" daemon [_thread_blocked, id=16056, stack(0x00007f36f76f7000,0x00007f36f77f8000)]
+  0x00007f371c00a000 JavaThread "main" [_thread_blocked, id=16050, stack(0x00007f3721e43000,0x00007f3721f44000)]
+
+Other Threads:
+=>0x00007f371c077800 VMThread [stack: 0x00007f36f77f8000,0x00007f36f78f9000] [id=16055]
+  0x00007f371c0c2800 WatcherThread [stack: 0x00007f36f6d13000,0x00007f36f6e14000] [id=16063]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007f371c006440] Threads_lock - owner thread: 0x00007f371c077800
+[0x00007f371c006940] Heap_lock - owner thread: 0x00007f36b125f800
+
+Heap:
+ PSYoungGen      total 173568K, used 11251K [0x00000000eab00000, 0x00000000f8980000, 0x0000000100000000)
+  eden space 162304K, 0% used [0x00000000eab00000,0x00000000eab00000,0x00000000f4980000)
+  from space 11264K, 99% used [0x00000000f4980000,0x00000000f547cee8,0x00000000f5480000)
+  to   space 12288K, 0% used [0x00000000f5480000,0x00000000f5480000,0x00000000f6080000)
+ ParOldGen       total 51200K, used 18844K [0x00000000c0000000, 0x00000000c3200000, 0x00000000eab00000)
+  object space 51200K, 36% used [0x00000000c0000000,0x00000000c1267330,0x00000000c3200000)
+ Metaspace       used 45706K, capacity 47020K, committed 47360K, reserved 1089536K
+  class space    used 6209K, capacity 6539K, committed 6656K, reserved 1048576K
+
+Card table byte_map: [0x00007f370b99a000,0x00007f370bb9b000] byte_map_base: 0x00007f370b39a000
+
+Marking Bits: (ParMarkBitMap*) 0x00007f3721316340
+ Begin Bits: [0x00007f3709541000, 0x00007f370a541000)
+ End Bits:   [0x00007f370a541000, 0x00007f370b541000)
+
+Polling page: 0x00007f3721f69000
+
+CodeCache: size=245760Kb used=15967Kb max_used=17154Kb free=229792Kb
+ bounds [0x00007f370bf5b000, 0x00007f370d04b000, 0x00007f371af5b000]
+ total_blobs=5365 nmethods=4629 adapters=649
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 150,636 Thread 0x00007f371c0bb000 nmethod 5179 0x00007f370c53b950 code [0x00007f370c53baa0, 0x00007f370c53bbf8]
+Event: 151,650 Thread 0x00007f371c0bd000 5180       3       org.gradle.api.internal.project.taskfactory.DefaultTaskClassValidatorExtractor$2::visitType (256 bytes)
+Event: 152,793 Thread 0x00007f371c0bd000 nmethod 5180 0x00007f370c74e410 code [0x00007f370c74e960, 0x00007f370c751e48]
+Event: 152,799 Thread 0x00007f371c0bd000 5183       3       java.lang.reflect.Executable::equalParamTypes (36 bytes)
+Event: 165,934 Thread 0x00007f371c0bd000 nmethod 5183 0x00007f370c2a5c90 code [0x00007f370c2a5e00, 0x00007f370c2a60d0]
+Event: 169,773 Thread 0x00007f371c0bd000 5181       3       com.google.common.collect.SingletonImmutableBiMap::get (20 bytes)
+Event: 177,909 Thread 0x00007f371c0bb000 5185 %     4       com.google.common.io.LineBuffer::add @ 47 (204 bytes)
+Event: 177,922 Thread 0x00007f371c0b8000 5186       4       java.util.AbstractCollection::toArray (70 bytes)
+Event: 181,765 Thread 0x00007f371c0bd000 nmethod 5181 0x00007f370c0b9f90 code [0x00007f370c0ba100, 0x00007f370c0ba388]
+Event: 185,164 Thread 0x00007f371c0bd000 5182       3       java.util.concurrent.TimeUnit$1::toNanos (2 bytes)
+
+GC Heap History (10 events):
+Event: 3,586 GC heap after
+Heap after GC invocations=6 (full 1):
+ PSYoungGen      total 66048K, used 0K [0x00000000eab00000, 0x00000000f3b00000, 0x0000000100000000)
+  eden space 63488K, 0% used [0x00000000eab00000,0x00000000eab00000,0x00000000ee900000)
+  from space 2560K, 0% used [0x00000000ee900000,0x00000000ee900000,0x00000000eeb80000)
+  to   space 10240K, 0% used [0x00000000f3100000,0x00000000f3100000,0x00000000f3b00000)
+ ParOldGen       total 41472K, used 12676K [0x00000000c0000000, 0x00000000c2880000, 0x00000000eab00000)
+  object space 41472K, 30% used [0x00000000c0000000,0x00000000c0c61158,0x00000000c2880000)
+ Metaspace       used 20892K, capacity 21170K, committed 21296K, reserved 1067008K
+  class space    used 2780K, capacity 2904K, committed 2944K, reserved 1048576K
+}
+Event: 4,646 GC heap before
+{Heap before GC invocations=7 (full 1):
+ PSYoungGen      total 66048K, used 63488K [0x00000000eab00000, 0x00000000f3b00000, 0x0000000100000000)
+  eden space 63488K, 100% used [0x00000000eab00000,0x00000000ee900000,0x00000000ee900000)
+  from space 2560K, 0% used [0x00000000ee900000,0x00000000ee900000,0x00000000eeb80000)
+  to   space 10240K, 0% used [0x00000000f3100000,0x00000000f3100000,0x00000000f3b00000)
+ ParOldGen       total 41472K, used 12676K [0x00000000c0000000, 0x00000000c2880000, 0x00000000eab00000)
+  object space 41472K, 30% used [0x00000000c0000000,0x00000000c0c61158,0x00000000c2880000)
+ Metaspace       used 25519K, capacity 25972K, committed 26240K, reserved 1071104K
+  class space    used 3563K, capacity 3706K, committed 3712K, reserved 1048576K
+Event: 4,675 GC heap after
+Heap after GC invocations=7 (full 1):
+ PSYoungGen      total 110080K, used 6958K [0x00000000eab00000, 0x00000000f3800000, 0x0000000100000000)
+  eden space 102912K, 0% used [0x00000000eab00000,0x00000000eab00000,0x00000000f0f80000)
+  from space 7168K, 97% used [0x00000000f3100000,0x00000000f37cba78,0x00000000f3800000)
+  to   space 10240K, 0% used [0x00000000f2400000,0x00000000f2400000,0x00000000f2e00000)
+ ParOldGen       total 41472K, used 12684K [0x00000000c0000000, 0x00000000c2880000, 0x00000000eab00000)
+  object space 41472K, 30% used [0x00000000c0000000,0x00000000c0c63158,0x00000000c2880000)
+ Metaspace       used 25519K, capacity 25972K, committed 26240K, reserved 1071104K
+  class space    used 3563K, capacity 3706K, committed 3712K, reserved 1048576K
+}
+Event: 7,344 GC heap before
+{Heap before GC invocations=8 (full 1):
+ PSYoungGen      total 110080K, used 109870K [0x00000000eab00000, 0x00000000f3800000, 0x0000000100000000)
+  eden space 102912K, 100% used [0x00000000eab00000,0x00000000f0f80000,0x00000000f0f80000)
+  from space 7168K, 97% used [0x00000000f3100000,0x00000000f37cba78,0x00000000f3800000)
+  to   space 10240K, 0% used [0x00000000f2400000,0x00000000f2400000,0x00000000f2e00000)
+ ParOldGen       total 41472K, used 12684K [0x00000000c0000000, 0x00000000c2880000, 0x00000000eab00000)
+  object space 41472K, 30% used [0x00000000c0000000,0x00000000c0c63158,0x00000000c2880000)
+ Metaspace       used 34371K, capacity 35006K, committed 35328K, reserved 1079296K
+  class space    used 4615K, capacity 4786K, committed 4864K, reserved 1048576K
+Event: 7,364 GC heap after
+Heap after GC invocations=8 (full 1):
+ PSYoungGen      total 134144K, used 10218K [0x00000000eab00000, 0x00000000f6080000, 0x0000000100000000)
+  eden space 123904K, 0% used [0x00000000eab00000,0x00000000eab00000,0x00000000f2400000)
+  from space 10240K, 99% used [0x00000000f2400000,0x00000000f2dfab20,0x00000000f2e00000)
+  to   space 12288K, 0% used [0x00000000f5480000,0x00000000f5480000,0x00000000f6080000)
+ ParOldGen       total 41472K, used 12910K [0x00000000c0000000, 0x00000000c2880000, 0x00000000eab00000)
+  object space 41472K, 31% used [0x00000000c0000000,0x00000000c0c9b8f8,0x00000000c2880000)
+ Metaspace       used 34371K, capacity 35006K, committed 35328K, reserved 1079296K
+  class space    used 4615K, capacity 4786K, committed 4864K, reserved 1048576K
+}
+Event: 7,524 GC heap before
+{Heap before GC invocations=9 (full 1):
+ PSYoungGen      total 134144K, used 29820K [0x00000000eab00000, 0x00000000f6080000, 0x0000000100000000)
+  eden space 123904K, 15% used [0x00000000eab00000,0x00000000ebe24800,0x00000000f2400000)
+  from space 10240K, 99% used [0x00000000f2400000,0x00000000f2dfab20,0x00000000f2e00000)
+  to   space 12288K, 0% used [0x00000000f5480000,0x00000000f5480000,0x00000000f6080000)
+ ParOldGen       total 41472K, used 12910K [0x00000000c0000000, 0x00000000c2880000, 0x00000000eab00000)
+  object space 41472K, 31% used [0x00000000c0000000,0x00000000c0c9b8f8,0x00000000c2880000)
+ Metaspace       used 34605K, capacity 35198K, committed 35496K, reserved 1079296K
+  class space    used 4634K, capacity 4786K, committed 4864K, reserved 1048576K
+Event: 7,539 GC heap after
+Heap after GC invocations=9 (full 1):
+ PSYoungGen      total 174592K, used 6208K [0x00000000eab00000, 0x00000000f8980000, 0x0000000100000000)
+  eden space 162304K, 0% used [0x00000000eab00000,0x00000000eab00000,0x00000000f4980000)
+  from space 12288K, 50% used [0x00000000f5480000,0x00000000f5a90000,0x00000000f6080000)
+  to   space 11264K, 0% used [0x00000000f4980000,0x00000000f4980000,0x00000000f5480000)
+ ParOldGen       total 41472K, used 12918K [0x00000000c0000000, 0x00000000c2880000, 0x00000000eab00000)
+  object space 41472K, 31% used [0x00000000c0000000,0x00000000c0c9d8f8,0x00000000c2880000)
+ Metaspace       used 34605K, capacity 35198K, committed 35496K, reserved 1079296K
+  class space    used 4634K, capacity 4786K, committed 4864K, reserved 1048576K
+}
+Event: 7,539 GC heap before
+{Heap before GC invocations=10 (full 2):
+ PSYoungGen      total 174592K, used 6208K [0x00000000eab00000, 0x00000000f8980000, 0x0000000100000000)
+  eden space 162304K, 0% used [0x00000000eab00000,0x00000000eab00000,0x00000000f4980000)
+  from space 12288K, 50% used [0x00000000f5480000,0x00000000f5a90000,0x00000000f6080000)
+  to   space 11264K, 0% used [0x00000000f4980000,0x00000000f4980000,0x00000000f5480000)
+ ParOldGen       total 41472K, used 12918K [0x00000000c0000000, 0x00000000c2880000, 0x00000000eab00000)
+  object space 41472K, 31% used [0x00000000c0000000,0x00000000c0c9d8f8,0x00000000c2880000)
+ Metaspace       used 34605K, capacity 35198K, committed 35496K, reserved 1079296K
+  class space    used 4634K, capacity 4786K, committed 4864K, reserved 1048576K
+Event: 7,716 GC heap after
+Heap after GC invocations=10 (full 2):
+ PSYoungGen      total 174592K, used 0K [0x00000000eab00000, 0x00000000f8980000, 0x0000000100000000)
+  eden space 162304K, 0% used [0x00000000eab00000,0x00000000eab00000,0x00000000f4980000)
+  from space 12288K, 0% used [0x00000000f5480000,0x00000000f5480000,0x00000000f6080000)
+  to   space 11264K, 0% used [0x00000000f4980000,0x00000000f4980000,0x00000000f5480000)
+ ParOldGen       total 51200K, used 13341K [0x00000000c0000000, 0x00000000c3200000, 0x00000000eab00000)
+  object space 51200K, 26% used [0x00000000c0000000,0x00000000c0d077d0,0x00000000c3200000)
+ Metaspace       used 34605K, capacity 35198K, committed 35496K, reserved 1079296K
+  class space    used 4634K, capacity 4786K, committed 4864K, reserved 1048576K
+}
+Event: 199,709 GC heap before
+{Heap before GC invocations=11 (full 2):
+ PSYoungGen      total 174592K, used 162304K [0x00000000eab00000, 0x00000000f8980000, 0x0000000100000000)
+  eden space 162304K, 100% used [0x00000000eab00000,0x00000000f4980000,0x00000000f4980000)
+  from space 12288K, 0% used [0x00000000f5480000,0x00000000f5480000,0x00000000f6080000)
+  to   space 11264K, 0% used [0x00000000f4980000,0x00000000f4980000,0x00000000f5480000)
+ ParOldGen       total 51200K, used 13341K [0x00000000c0000000, 0x00000000c3200000, 0x00000000eab00000)
+  object space 51200K, 26% used [0x00000000c0000000,0x00000000c0d077d0,0x00000000c3200000)
+ Metaspace       used 45706K, capacity 47020K, committed 47360K, reserved 1089536K
+  class space    used 6209K, capacity 6539K, committed 6656K, reserved 1048576K
+
+Deoptimization events (10 events):
+Event: 9,126 Thread 0x00007f36c4008800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f370cddfecc method=com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanEndElement()I @ 142
+Event: 9,127 Thread 0x00007f36c4008800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f370cddfecc method=com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanEndElement()I @ 142
+Event: 9,127 Thread 0x00007f36c4008800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f370cddfecc method=com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanEndElement()I @ 142
+Event: 9,127 Thread 0x00007f36c4008800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f370cddfecc method=com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanEndElement()I @ 142
+Event: 9,142 Thread 0x00007f36c4008800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f370cdff254 method=java.util.regex.Pattern$Curly.match0(Ljava/util/regex/Matcher;IILjava/lang/CharSequence;)Z @ 170
+Event: 9,142 Thread 0x00007f36c4008800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f370cdff254 method=java.util.regex.Pattern$Curly.match0(Ljava/util/regex/Matcher;IILjava/lang/CharSequence;)Z @ 170
+Event: 9,142 Thread 0x00007f36c4008800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f370cdff254 method=java.util.regex.Pattern$Curly.match0(Ljava/util/regex/Matcher;IILjava/lang/CharSequence;)Z @ 170
+Event: 9,142 Thread 0x00007f36c4008800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f370cdff254 method=java.util.regex.Pattern$Curly.match0(Ljava/util/regex/Matcher;IILjava/lang/CharSequence;)Z @ 170
+Event: 9,162 Thread 0x00007f36c4008800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f370c790da8 method=java.lang.CharacterDataLatin1.digit(II)I @ 31
+Event: 10,529 Thread 0x00007f36c4008800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f370c77efd8 method=java.net.URI.match(CJJ)Z @ 45
+
+Internal exceptions (10 events):
+Event: 138,946 Thread 0x00007f36b125f800 Exception <a 'java/io/IOException'> (0x00000000f45fd348) thrown at [/ssd/Android/AOSP-openjdk/external/jetbrains/jdk/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 144,522 Thread 0x00007f36b125f800 Exception <a 'java/io/IOException'> (0x00000000f4605aa0) thrown at [/ssd/Android/AOSP-openjdk/external/jetbrains/jdk/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 147,001 Thread 0x00007f36b125f800 Exception <a 'java/io/IOException'> (0x00000000f460e2a0) thrown at [/ssd/Android/AOSP-openjdk/external/jetbrains/jdk/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 152,774 Thread 0x00007f36b125f800 Exception <a 'java/io/IOException'> (0x00000000f46169f8) thrown at [/ssd/Android/AOSP-openjdk/external/jetbrains/jdk/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 169,487 Thread 0x00007f36b125f800 Exception <a 'java/io/IOException'> (0x00000000f461f150) thrown at [/ssd/Android/AOSP-openjdk/external/jetbrains/jdk/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 177,899 Thread 0x00007f36b125f800 Exception <a 'java/io/IOException'> (0x00000000f4627888) thrown at [/ssd/Android/AOSP-openjdk/external/jetbrains/jdk/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 177,910 Thread 0x00007f36b125f800 Exception <a 'java/io/IOException'> (0x00000000f462ffc0) thrown at [/ssd/Android/AOSP-openjdk/external/jetbrains/jdk/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 177,910 Thread 0x00007f36b125f800 Exception <a 'java/io/IOException'> (0x00000000f46386f8) thrown at [/ssd/Android/AOSP-openjdk/external/jetbrains/jdk/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 177,911 Thread 0x00007f36b125f800 Exception <a 'java/io/IOException'> (0x00000000f4640e30) thrown at [/ssd/Android/AOSP-openjdk/external/jetbrains/jdk/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 198,828 Thread 0x00007f36b125f800 Exception <a 'java/io/IOException'> (0x00000000f4649588) thrown at [/ssd/Android/AOSP-openjdk/external/jetbrains/jdk/hotspot/src/share/vm/prims/jni.cpp, line 709]
+
+Events (10 events):
+Event: 151,577 loading class org/gradle/internal/nativeplatform/filesystem/FileSystem done
+Event: 151,650 loading class org/gradle/api/plugins/BasePlugin$1$1
+Event: 151,650 loading class org/gradle/api/plugins/BasePlugin$1$1 done
+Event: 151,820 loading class org/gradle/api/plugins/BasePlugin$1$3
+Event: 152,038 loading class org/gradle/api/plugins/BasePlugin$1$3 done
+Event: 152,846 loading class org/gradle/api/plugins/BasePlugin$1$4
+Event: 152,881 loading class org/gradle/api/plugins/BasePlugin$1$4 done
+Event: 177,909 loading class com/android/build/gradle/internal/incremental/InstantRunAnchorTaskConfigAction
+Event: 177,913 loading class com/android/build/gradle/internal/incremental/InstantRunAnchorTaskConfigAction done
+Event: 199,621 Executing VM operation: ParallelGCFailedAllocation
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 08:06 1712179                            /home/fauxmacbook/android-studio/jre/bin/java
+00600000-00601000 r--p 00000000 08:06 1712179                            /home/fauxmacbook/android-studio/jre/bin/java
+00601000-00602000 rw-p 00001000 08:06 1712179                            /home/fauxmacbook/android-studio/jre/bin/java
+00ee9000-00f0a000 rw-p 00000000 00:00 0                                  [heap]
+c0000000-c3200000 rw-p 00000000 00:00 0 
+c3200000-eab00000 ---p 00000000 00:00 0 
+eab00000-f8980000 rw-p 00000000 00:00 0 
+fa880000-100000000 ---p 00000000 00:00 0 
+100000000-100680000 rw-p 00000000 00:00 0 
+100680000-140000000 ---p 00000000 00:00 0 
+7f3698000000-7f3698021000 rw-p 00000000 00:00 0 
+7f3698021000-7f369c000000 ---p 00000000 00:00 0 
+7f369fa00000-7f369fbc0000 rw-p 00000000 00:00 0 
+7f369fbc0000-7f369fc00000 ---p 00000000 00:00 0 
+7f369fc00000-7f369fe00000 rw-p 00000000 00:00 0 
+7f369fe00000-7f36a0000000 rw-p 00000000 00:00 0 
+7f36a0000000-7f36a0021000 rw-p 00000000 00:00 0 
+7f36a0021000-7f36a4000000 ---p 00000000 00:00 0 
+7f36a4000000-7f36a4021000 rw-p 00000000 00:00 0 
+7f36a4021000-7f36a8000000 ---p 00000000 00:00 0 
+7f36a8000000-7f36a8021000 rw-p 00000000 00:00 0 
+7f36a8021000-7f36ac000000 ---p 00000000 00:00 0 
+7f36ac000000-7f36ac062000 rw-p 00000000 00:00 0 
+7f36ac062000-7f36b0000000 ---p 00000000 00:00 0 
+7f36b0000000-7f36b185e000 rw-p 00000000 00:00 0 
+7f36b185e000-7f36b4000000 ---p 00000000 00:00 0 
+7f36b4000000-7f36b4021000 rw-p 00000000 00:00 0 
+7f36b4021000-7f36b8000000 ---p 00000000 00:00 0 
+7f36b8000000-7f36b8021000 rw-p 00000000 00:00 0 
+7f36b8021000-7f36bc000000 ---p 00000000 00:00 0 
+7f36bc000000-7f36bc021000 rw-p 00000000 00:00 0 
+7f36bc021000-7f36c0000000 ---p 00000000 00:00 0 
+7f36c0000000-7f36c0021000 rw-p 00000000 00:00 0 
+7f36c0021000-7f36c4000000 ---p 00000000 00:00 0 
+7f36c4000000-7f36c4021000 rw-p 00000000 00:00 0 
+7f36c4021000-7f36c8000000 ---p 00000000 00:00 0 
+7f36c8000000-7f36c8075000 rw-p 00000000 00:00 0 
+7f36c8075000-7f36cc000000 ---p 00000000 00:00 0 
+7f36cc1de000-7f36cc1f1000 r--s 00344000 08:06 1712202                    /home/fauxmacbook/android-studio/jre/jre/lib/resources.jar
+7f36cc1f1000-7f36cc3f1000 rw-p 00000000 00:00 0 
+7f36cc3f1000-7f36cc5f1000 rw-p 00000000 00:00 0 
+7f36cc5f1000-7f36cc5f4000 ---p 00000000 00:00 0 
+7f36cc5f4000-7f36cc6f2000 rw-p 00000000 00:00 0 
+7f36cc6f2000-7f36cc718000 r--p 00000000 08:06 140690                     /usr/share/locale-langpack/fr/LC_MESSAGES/libc.mo
+7f36cc718000-7f36cc918000 rw-p 00000000 00:00 0 
+7f36cc918000-7f36ccb18000 rw-p 00000000 00:00 0 
+7f36ccb18000-7f36ccb19000 r--s 00001000 08:06 2238455                    /home/fauxmacbook/.gradle/caches/jars-2/cmhx5eetujk7j30d3nllwxyrlnugzjw/annotations-25.3.3.jar
+7f36ccb19000-7f36ccb21000 r--s 000a8000 08:06 2238453                    /home/fauxmacbook/.gradle/caches/jars-2/lp0h431tl0554nh1vx6zomcvteflkp/lombok-ast-0.2.3.jar
+7f36ccb21000-7f36ccb35000 r--s 000b4000 08:06 2238451                    /home/fauxmacbook/.gradle/caches/jars-2/hgvw6szzawm3evod5l2d6iutfug31w0/uast-162.2228.14.jar
+7f36ccb35000-7f36ccb37000 r--s 0000d000 08:06 2238449                    /home/fauxmacbook/.gradle/caches/jars-2/7pwz1bowgakb1eux9ezb56jlturgsyi/commons-codec-1.4.jar
+7f36ccb37000-7f36ccb39000 r--s 0000d000 08:06 2238447                    /home/fauxmacbook/.gradle/caches/jars-2/9dj1m0eyooi5qt13735vz8fpkl3cnfy/commons-logging-1.1.1.jar
+7f36ccb39000-7f36ccb3e000 r--s 00028000 08:06 2238445                    /home/fauxmacbook/.gradle/caches/jars-2/62lv0fe9b3xbqe57f6ljy5upwi7mf6k/httpcore-4.1.jar
+7f36ccb3e000-7f36ccb42000 r--s 0002f000 08:06 2238443                    /home/fauxmacbook/.gradle/caches/jars-2/gsg5n52frsvw6sx0swqqe2hwijwdcf0/jimfs-1.1.jar
+7f36ccb42000-7f36ccb43000 r--s 00004000 08:06 2238441                    /home/fauxmacbook/.gradle/caches/jars-2/lxs252id0979odjrerlctkb26c2vj95/annotations-12.0.jar
+7f36ccb43000-7f36ccb44000 r--s 00004000 08:06 2238439                    /home/fauxmacbook/.gradle/caches/jars-2/9kn99dr0rulyl67sct1ephwcop56l61/asm-analysis-5.0.4.jar
+7f36ccb44000-7f36ccb48000 r--s 00040000 08:06 2238437                    /home/fauxmacbook/.gradle/caches/jars-2/ccvn7yglm4blceovs70fngoac1eyn4f/lint-api-25.3.3.jar
+7f36ccb48000-7f36ccb4a000 r--s 00005000 08:06 2238433                    /home/fauxmacbook/.gradle/caches/jars-2/i6hc1uuj8e9ck59slmzdyz78ydn8sr6/httpmime-4.1.jar
+7f36ccb4a000-7f36ccb52000 r--s 0004e000 08:06 2238431                    /home/fauxmacbook/.gradle/caches/jars-2/7503wa5irssz0xxahv1xb82p2dl7rr2/httpclient-4.1.1.jar
+7f36ccb52000-7f36ccb59000 r--s 00053000 08:06 2238429                    /home/fauxmacbook/.gradle/caches/jars-2/jgkfvs4eqggj7qsyw1f5d3up57hanj1/commons-compress-1.8.1.jar
+7f36ccb59000-7f36ccb5e000 r--s 0002a000 08:06 2238427                    /home/fauxmacbook/.gradle/caches/jars-2/je8f027qcr1z1egw08byp1ybxbp9kko/gson-2.2.4.jar
+7f36ccb5e000-7f36ccb63000 r--s 0002e000 08:06 2238425                    /home/fauxmacbook/.gradle/caches/jars-2/s427p2wh0tfza0xa8qijgx107eeevyl/repository-25.3.3.jar
+7f36ccb63000-7f36ccb65000 r--s 00006000 08:06 2238423                    /home/fauxmacbook/.gradle/caches/jars-2/e2s952s6co8tps89l80r4riixwqo2oe/dvlib-25.3.3.jar
+7f36ccb65000-7f36ccb67000 r--s 00013000 08:06 2238421                    /home/fauxmacbook/.gradle/caches/jars-2/s02k517nvrh8cbp2c8dz4slqska6dj9/layoutlib-api-25.3.3.jar
+7f36ccb67000-7f36ccb77000 r--s 000d5000 08:06 2238417                    /home/fauxmacbook/.gradle/caches/jars-2/qzf32gp9kej4w4hlbabft6tplu74cj3/proguard-base-5.3.2.jar
+7f36ccb77000-7f36ccb8e000 r--s 00154000 08:06 2238411                    /home/fauxmacbook/.gradle/caches/jars-2/sfeivjswzitn6n0fnjx3ueszz8gv8o1/antlr4-4.5.3.jar
+7f36ccb8e000-7f36ccbb9000 r--s 001fc000 08:06 2238407                    /home/fauxmacbook/.gradle/caches/jars-2/nxjrjftly2xksl8o0wqgivu5netfu2x/guava-18.0.jar
+7f36ccbb9000-7f36ccbcc000 r--s 00241000 08:06 2238405                    /home/fauxmacbook/.gradle/caches/jars-2/9yuekvg4qerfitq3xec0iyckuw3hwaq/ecj-4.6.1.jar
+7f36ccbcc000-7f36ccbff000 r--s 00203000 08:06 2238399                    /home/fauxmacbook/.gradle/caches/jars-2/hj0bfvxu9cq7hkwmecvp0kg137or3hh/bcprov-jdk15on-1.48.jar
+7f36ccbff000-7f36ccdff000 rw-p 00000000 00:00 0 
+7f36ccdff000-7f36ccfff000 rw-p 00000000 00:00 0 
+7f36ccfff000-7f36d0000000 rw-p 00000000 00:00 0 
+7f36d0000000-7f36d0021000 rw-p 00000000 00:00 0 
+7f36d0021000-7f36d4000000 ---p 00000000 00:00 0 
+7f36d4000000-7f36d4021000 rw-p 00000000 00:00 0 
+7f36d4021000-7f36d8000000 ---p 00000000 00:00 0 
+7f36d8000000-7f36da0cb000 rw-p 00000000 00:00 0 
+7f36da0cb000-7f36dc000000 ---p 00000000 00:00 0 
+7f36dc000000-7f36dcb17000 rw-p 00000000 00:00 0 
+7f36dcb17000-7f36e0000000 ---p 00000000 00:00 0 
+7f36e0000000-7f36e0021000 rw-p 00000000 00:00 0 
+7f36e0021000-7f36e4000000 ---p 00000000 00:00 0 
+7f36e4000000-7f36e60a3000 rw-p 00000000 00:00 0 
+7f36e60a3000-7f36e8000000 ---p 00000000 00:00 0 
+7f36e8000000-7f36e8021000 rw-p 00000000 00:00 0 
+7f36e8021000-7f36ec000000 ---p 00000000 00:00 0 
+7f36ec000000-7f36ec021000 rw-p 00000000 00:00 0 
+7f36ec021000-7f36f0000000 ---p 00000000 00:00 0 
+7f36f0000000-7f36f0286000 rw-p 00000000 00:00 0 
+7f36f0286000-7f36f4000000 ---p 00000000 00:00 0 
+7f36f4000000-7f36f4001000 r--s 0000a000 08:06 2238435                    /home/fauxmacbook/.gradle/caches/jars-2/nwyg9io65lv6jvmwit2wq82xnnxd7ia/kxml2-2.3.0.jar
+7f36f4001000-7f36f4006000 r--s 00058000 08:06 2238419                    /home/fauxmacbook/.gradle/caches/jars-2/st159835qgxm0l87oqrnhayxos4lc1n/asm-debug-all-5.0.1.jar
+7f36f4006000-7f36f4009000 r--s 00033000 08:06 2238415                    /home/fauxmacbook/.gradle/caches/jars-2/nz9sndmr8b4xbj4xulkaciy5kdbyfiz/juniversalchardet-1.0.3.jar
+7f36f4009000-7f36f400d000 r--s 0002a000 08:06 2238413                    /home/fauxmacbook/.gradle/caches/jars-2/krbpn9xjn1qymukyx8cc5l799ty1v3h/commons-io-2.4.jar
+7f36f400d000-7f36f400f000 r--s 00002000 08:06 2238409                    /home/fauxmacbook/.gradle/caches/jars-2/rh2ip1x2zziz26tr3qzudtz088pqsb2/baseLibrary-2.3.3.jar
+7f36f400f000-7f36f4016000 r--s 000d9000 08:06 2238403                    /home/fauxmacbook/.gradle/caches/jars-2/ak89aa8liqmr44u7r08njntn6oehe0z/lint-checks-25.3.3.jar
+7f36f4016000-7f36f4018000 r--s 00006000 08:06 2238401                    /home/fauxmacbook/.gradle/caches/jars-2/6phgj9ki3jl3p5epzkqoo8pr6kur40b/asm-tree-5.0.4.jar
+7f36f4018000-7f36f4026000 r--s 00081000 08:06 2238397                    /home/fauxmacbook/.gradle/caches/jars-2/4r7xli0tz94y0wfjrdyjxlxar3g1pb9/bcpkix-jdk15on-1.48.jar
+7f36f4026000-7f36f4028000 r--s 00002000 08:06 2100934                    /home/fauxmacbook/.gradle/caches/jars-2/f32bh5uivuf69ecz2j8hl96ksnqdh7v/javawriter-2.5.0.jar
+7f36f4028000-7f36f402a000 r--s 00004000 08:06 2100932                    /home/fauxmacbook/.gradle/caches/jars-2/j6s1upogkwo00sygdsekzj4fx0i75uy/tracker-25.3.3.jar
+7f36f402a000-7f36f402b000 r--s 00005000 08:06 2100930                    /home/fauxmacbook/.gradle/caches/jars-2/4svya0t1s9wyo35ycd3atidsaoo6w7e/shared-25.3.3.jar
+7f36f402b000-7f36f4039000 r--s 00147000 08:06 2100928                    /home/fauxmacbook/.gradle/caches/jars-2/qx6695c5ocd9swxv7wqtxor3plyb4b7/protos-25.3.3.jar
+7f36f4039000-7f36f403f000 r--s 0004a000 08:06 2100922                    /home/fauxmacbook/.gradle/caches/jars-2/euoqfzf5y1sibp9ul8mcz0wovj380eo/ddmlib-25.3.3.jar
+7f36f403f000-7f36f423f000 rw-p 00000000 00:00 0 
+7f36f423f000-7f36f443f000 rw-p 00000000 00:00 0 
+7f36f443f000-7f36f4440000 r--s 00001000 08:06 2100926                    /home/fauxmacbook/.gradle/caches/jars-2/bqo69msswbvaagsh45hf1tq02v21sml/jill-api-0.10.0.jar
+7f36f4440000-7f36f4442000 r--s 00003000 08:06 2100924                    /home/fauxmacbook/.gradle/caches/jars-2/7pldadygbci34ql8thws797g29k1uhh/jack-api-0.13.0.jar
+7f36f4442000-7f36f4445000 r--s 00022000 08:06 2100920                    /home/fauxmacbook/.gradle/caches/jars-2/a81bg2yxzmumashablwecaj0ksz6tmj/manifest-merger-25.3.3.jar
+7f36f4445000-7f36f4448000 r--s 0001c000 08:06 2100918                    /home/fauxmacbook/.gradle/caches/jars-2/l6cnyee1vojrkkbpp6qwgpf30shmrja/common-25.3.3.jar
+7f36f4448000-7f36f4451000 r--s 00089000 08:06 2100916                    /home/fauxmacbook/.gradle/caches/jars-2/m0t6h8af70sdgxvkj522jy01i14mnb8/sdk-common-25.3.3.jar
+7f36f4451000-7f36f445b000 r--s 00098000 08:06 2100914                    /home/fauxmacbook/.gradle/caches/jars-2/28c9ykhc782k8jmlrnbnccai34hziki/sdklib-25.3.3.jar
+7f36f445b000-7f36f445c000 r--s 00002000 08:06 2100912                    /home/fauxmacbook/.gradle/caches/jars-2/4dod7a1p5hoai4v37pxbcg65bbahvg2/builder-test-api-2.3.3.jar
+7f36f445c000-7f36f445f000 r--s 00006000 08:06 2100910                    /home/fauxmacbook/.gradle/caches/jars-2/omk02asobup8sgd6qxom3ej5bg94z2r/builder-model-2.3.3.jar
+7f36f445f000-7f36f446e000 r--s 00130000 08:06 2100908                    /home/fauxmacbook/.gradle/caches/jars-2/cr6zkqpx14lor9zdtmo49qpc7y8r8p4/protobuf-java-3.0.0.jar
+7f36f446e000-7f36f4470000 r--s 0000f000 08:06 2100906                    /home/fauxmacbook/.gradle/caches/jars-2/rvfyugrlu5tbpz51p98og0qsxamjq4k/jopt-simple-4.9.jar
+7f36f4470000-7f36f4474000 r--s 0001f000 08:06 2100904                    /home/fauxmacbook/.gradle/caches/jars-2/nq3fzqkrrm37ob61z4iu5qdbh368uat/org.jacoco.report-0.7.5.201505241946.jar
+7f36f4474000-7f36f4478000 r--s 0001d000 08:06 2100902                    /home/fauxmacbook/.gradle/caches/jars-2/3kxkmcckmk40ron92zhbm0qjo9l4bkl/org.jacoco.core-0.7.5.201505241946.jar
+7f36f4478000-7f36f447a000 r--s 00002000 08:06 2100900                    /home/fauxmacbook/.gradle/caches/jars-2/m4m0pzb4gmaeh0in5g2xc4bxeuwt828/proguard-gradle-5.3.2.jar
+7f36f447a000-7f36f447c000 r--s 00009000 08:06 2100898                    /home/fauxmacbook/.gradle/caches/jars-2/ajvcvdu66lc9e3tvvipxtuq48i9bbkc/asm-commons-5.0.4.jar
+7f36f447c000-7f36f447e000 r--s 0000c000 08:06 2100896                    /home/fauxmacbook/.gradle/caches/jars-2/1laz1ygmxoc408r7nwqs1q8uk8r236d/asm-5.0.4.jar
+7f36f447e000-7f36f4483000 r--s 0002c000 08:06 2100894                    /home/fauxmacbook/.gradle/caches/jars-2/3mlasgi8oo9o7oa12526198jui9zmp2/compilerCommon-2.3.3.jar
+7f36f4483000-7f36f4484000 r--s 00002000 08:06 2100892                    /home/fauxmacbook/.gradle/caches/jars-2/73l309uzm0ila7rdaaxteq0ng4ayf2y/gradle-api-2.3.3.jar
+7f36f4484000-7f36f4485000 r--s 00000000 08:06 2100890                    /home/fauxmacbook/.gradle/caches/jars-2/tlyajppf8woug00g686fx5mchf8iv3o/transform-api-2.0.0-deprecated-use-gradle-api.jar
+7f36f4485000-7f36f448a000 r--s 0005e000 08:06 2100888                    /home/fauxmacbook/.gradle/caches/jars-2/k2xtosjt0in0zj7mpwvctw6iznt93uh/lint-25.3.3.jar
+7f36f448a000-7f36f44a0000 r--s 00163000 08:06 2100886                    /home/fauxmacbook/.gradle/caches/jars-2/nyg71b5n2lzymmwh5vbtmvjiby07k4g/builder-2.3.3.jar
+7f36f44a0000-7f36f44bf000 r--s 001ca000 08:06 2100884                    /home/fauxmacbook/.gradle/caches/jars-2/5fwyvjq1ai8mdh1mluqxidj1wo7rls8/gradle-core-2.3.3.jar
+7f36f44bf000-7f36f44c1000 r--s 0000d000 08:06 1967258                    /home/fauxmacbook/.gradle/caches/jars-2/mel54vauze7hczg2p6nebauqz8s53sj/gradle-2.3.3.jar
+7f36f44c1000-7f36f44c4000 ---p 00000000 00:00 0 
+7f36f44c4000-7f36f44fa000 rw-p 00000000 00:00 0 
+7f36f44fa000-7f36f44fb000 r--p 00000000 00:00 0 
+7f36f44fb000-7f36f46fb000 rw-p 00000000 00:00 0 
+7f36f46fb000-7f36f48fb000 rw-p 00000000 00:00 0 
+7f36f48fb000-7f36f4974000 r--s 010ed000 08:06 1712144                    /home/fauxmacbook/android-studio/jre/lib/tools.jar
+7f36f4974000-7f36f4b74000 rw-p 00000000 00:00 0 
+7f36f4b74000-7f36f4b77000 ---p 00000000 00:00 0 
+7f36f4b77000-7f36f4c75000 rw-p 00000000 00:00 0 
+7f36f4c75000-7f36f4c78000 ---p 00000000 00:00 0 
+7f36f4c78000-7f36f4f76000 rw-p 00000000 00:00 0 
+7f36f4f76000-7f36f4f79000 ---p 00000000 00:00 0 
+7f36f4f79000-7f36f5077000 rw-p 00000000 00:00 0 
+7f36f5077000-7f36f507a000 ---p 00000000 00:00 0 
+7f36f507a000-7f36f5178000 rw-p 00000000 00:00 0 
+7f36f5178000-7f36f517b000 ---p 00000000 00:00 0 
+7f36f517b000-7f36f5279000 rw-p 00000000 00:00 0 
+7f36f5279000-7f36f527c000 ---p 00000000 00:00 0 
+7f36f527c000-7f36f537a000 rw-p 00000000 00:00 0 
+7f36f537a000-7f36f537d000 ---p 00000000 00:00 0 
+7f36f537d000-7f36f547b000 rw-p 00000000 00:00 0 
+7f36f547b000-7f36f547e000 ---p 00000000 00:00 0 
+7f36f547e000-7f36f557c000 rw-p 00000000 00:00 0 
+7f36f557c000-7f36f557f000 ---p 00000000 00:00 0 
+7f36f557f000-7f36f567d000 rw-p 00000000 00:00 0 
+7f36f567d000-7f36f5684000 r--s 00000000 08:06 1217011                    /usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache
+7f36f5684000-7f36f5884000 rw-p 00000000 00:00 0 
+7f36f5884000-7f36f5887000 ---p 00000000 00:00 0 
+7f36f5887000-7f36f5985000 rw-p 00000000 00:00 0 
+7f36f5985000-7f36f598e000 r-xp 00000000 08:06 1712280                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/libmanagement.so
+7f36f598e000-7f36f5b8d000 ---p 00009000 08:06 1712280                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/libmanagement.so
+7f36f5b8d000-7f36f5b8e000 r--p 00008000 08:06 1712280                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/libmanagement.so
+7f36f5b8e000-7f36f5b8f000 rw-p 00009000 08:06 1712280                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/libmanagement.so
+7f36f5b8f000-7f36f5b94000 r--s 00098000 08:06 1712254                    /home/fauxmacbook/android-studio/jre/jre/lib/jsse.jar
+7f36f5b94000-7f36f5b96000 r--s 00007000 08:06 2502645                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-tooling-api-builders-3.4.1.jar
+7f36f5b96000-7f36f5b99000 r--s 00009000 08:06 2502638                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-testing-native-3.4.1.jar
+7f36f5b99000-7f36f5b9f000 r--s 00033000 08:06 2502713                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/snakeyaml-1.6.jar
+7f36f5b9f000-7f36f5ba1000 r--s 00006000 08:06 2502712                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/jcommander-1.12.jar
+7f36f5ba1000-7f36f5ba6000 r--s 00040000 08:06 2502711                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/bsh-2.0b4.jar
+7f36f5ba6000-7f36f5ba8000 r--s 00009000 08:06 2502719                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/hamcrest-core-1.3.jar
+7f36f5ba8000-7f36f5bb1000 r--s 00089000 08:06 2502670                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/testng-6.3.1.jar
+7f36f5bb1000-7f36f5bb9000 r--s 00045000 08:06 2502669                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/junit-4.12.jar
+7f36f5bb9000-7f36f5bbf000 r--s 0002e000 08:06 2502639                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-testing-jvm-3.4.1.jar
+7f36f5bbf000-7f36f5bc3000 r--s 00016000 08:06 2502637                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-testing-base-3.4.1.jar
+7f36f5bc3000-7f36f5bca000 r--s 00038000 08:06 2502664                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/bcpg-jdk15on-1.51.jar
+7f36f5bca000-7f36f5bcc000 r--s 0000c000 08:06 2502616                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-signing-3.4.1.jar
+7f36f5bcc000-7f36f5bce000 r--s 00007000 08:06 2502615                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-scala-3.4.1.jar
+7f36f5bce000-7f36f5bcf000 r--s 00004000 08:06 2502643                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-resources-sftp-3.4.1.jar
+7f36f5bcf000-7f36f5bdf000 r--s 00088000 08:06 2502680                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/joda-time-2.8.2.jar
+7f36f5bdf000-7f36f5bf0000 r--s 0010d000 08:06 2502679                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/jackson-databind-2.6.6.jar
+7f36f5bf0000-7f36f5bf3000 r--s 00009000 08:06 2502678                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/jackson-annotations-2.6.6.jar
+7f36f5bf3000-7f36f5bf7000 r--s 0003c000 08:06 2502677                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/jackson-core-2.6.6.jar
+7f36f5bf7000-7f36f5c05000 r--s 00087000 08:06 2502676                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/aws-java-sdk-core-1.11.6.jar
+7f36f5c05000-7f36f5c0c000 r--s 00057000 08:06 2502675                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/aws-java-sdk-kms-1.11.6.jar
+7f36f5c0c000-7f36f5c19000 r--s 0008e000 08:06 2502674                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/aws-java-sdk-s3-1.11.6.jar
+7f36f5c19000-7f36f5c1b000 r--s 00004000 08:06 2502644                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-resources-s3-3.4.1.jar
+7f36f5c1b000-7f36f5c1d000 r--s 00005000 08:06 2502668                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/jatl-0.2.2.jar
+7f36f5c1d000-7f36f5c1f000 r--s 0000f000 08:06 2502621                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-reporting-3.4.1.jar
+7f36f5c1f000-7f36f5c21000 r--s 00002000 08:06 2502622                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-publish-3.4.1.jar
+7f36f5c21000-7f36f5c23000 r--s 00009000 08:06 2502651                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/commons-cli-1.2.jar
+7f36f5c23000-7f36f5c29000 r--s 00034000 08:06 2502607                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-plugins-3.4.1.jar
+7f36f5c29000-7f36f5c2b000 r--s 00009000 08:06 2502640                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-plugin-development-3.4.1.jar
+7f36f5c2b000-7f36f5c31000 r--s 0002b000 08:06 2502633                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-platform-play-3.4.1.jar
+7f36f5c31000-7f36f5c3f000 r--s 00056000 08:06 2502632                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-platform-native-3.4.1.jar
+7f36f5c3f000-7f36f5c43000 r--s 0001a000 08:06 2502627                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-platform-jvm-3.4.1.jar
+7f36f5c43000-7f36f5c4a000 r--s 00028000 08:06 2502626                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-platform-base-3.4.1.jar
+7f36f5c4a000-7f36f5c72000 r--s 0021c000 08:06 2502659                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/biz.aQute.bndlib-3.2.0.jar
+7f36f5c72000-7f36f5c74000 r--s 00003000 08:06 2502611                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-osgi-3.4.1.jar
+7f36f5c74000-7f36f5c77000 r--s 0000c000 08:06 2502662                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/pmaven-groovy-0.8-20100325.jar
+7f36f5c77000-7f36f5c78000 r--s 00004000 08:06 2502661                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/pmaven-common-0.8-20100325.jar
+7f36f5c78000-7f36f5c7d000 r--s 00024000 08:06 2502612                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-maven-3.4.1.jar
+7f36f5c7d000-7f36f5c80000 r--s 0000b000 08:06 2502631                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-language-scala-3.4.1.jar
+7f36f5c80000-7f36f5c86000 r--s 0001a000 08:06 2502635                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-language-native-3.4.1.jar
+7f36f5c86000-7f36f5c88000 r--s 00006000 08:06 2502628                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-language-jvm-3.4.1.jar
+7f36f5c88000-7f36f5c8e000 r--s 0002e000 08:06 2502629                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-language-java-3.4.1.jar
+7f36f5c8e000-7f36f5c90000 r--s 0000a000 08:06 2502630                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-language-groovy-3.4.1.jar
+7f36f5c90000-7f36f5c93000 r--s 0001e000 08:06 2502686                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/jsp-api-2.1-6.1.14.jar
+7f36f5c93000-7f36f5cb6000 r--s 00344000 08:06 2502685                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/core-3.1.1.jar
+7f36f5cb6000-7f36f5cb7000 r--s 00006000 08:06 2502684                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/jetty-naming-6.1.26.jar
+7f36f5cb7000-7f36f5cb8000 r--s 00002000 08:06 2502658                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/geronimo-annotation_1.0_spec-1.0.jar
+7f36f5cb8000-7f36f5cba000 r--s 00002000 08:06 2502657                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/jetty-annotations-6.1.26.jar
+7f36f5cba000-7f36f5ccb000 r--s 000ea000 08:06 2502656                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/jsp-2.1-6.1.14.jar
+7f36f5ccb000-7f36f5ccd000 r--s 0000d000 08:06 2502655                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/jetty-plus-6.1.26.jar
+7f36f5ccd000-7f36f5ccf000 r--s 0001f000 08:06 2502654                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/servlet-api-2.5-20081211.jar
+7f36f5ccf000-7f36f5cd3000 r--s 00028000 08:06 2502653                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/jetty-util-6.1.26.jar
+7f36f5cd3000-7f36f5cda000 r--s 0007d000 08:06 2502652                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/jetty-6.1.26.jar
+7f36f5cda000-7f36f5cdc000 r--s 0000a000 08:06 2502609                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-jetty-3.4.1.jar
+7f36f5cdc000-7f36f5ce3000 r--s 00035000 08:06 2502667                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/simple-4.1.21.jar
+7f36f5ce3000-7f36f5cef000 r--s 00100000 08:06 2502665                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/rhino-1.7R3.jar
+7f36f5cef000-7f36f5cf3000 r--s 00012000 08:06 2502618                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-javascript-3.4.1.jar
+7f36f5cf3000-7f36f5cf6000 r--s 00011000 08:06 2502624                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-jacoco-3.4.1.jar
+7f36f5cf6000-7f36f5cf9000 r--s 0000e000 08:06 2502623                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-ivy-3.4.1.jar
+7f36f5cf9000-7f36f5cfa000 r--s 00002000 08:06 2502634                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-ide-play-3.4.1.jar
+7f36f5cfa000-7f36f5cfd000 r--s 00013000 08:06 2502636                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-ide-native-3.4.1.jar
+7f36f5cfd000-7f36f5d06000 r--s 00053000 08:06 2502613                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-ide-3.4.1.jar
+7f36f5d06000-7f36f5d08000 r--s 00007000 08:06 2502617                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-ear-3.4.1.jar
+7f36f5d08000-7f36f5d0e000 r--s 00039000 08:06 2502620                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-diagnostics-3.4.1.jar
+7f36f5d0e000-7f36f5d0f000 r--s 00009000 08:06 2502646                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-composite-builds-3.4.1.jar
+7f36f5d0f000-7f36f5d14000 r--s 00023000 08:06 2502608                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-code-quality-3.4.1.jar
+7f36f5d14000-7f36f5d19000 r--s 00022000 08:06 2502625                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-build-init-3.4.1.jar
+7f36f5d19000-7f36f5d1f000 r--s 0008e000 08:06 2502619                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-build-comparison-3.4.1.jar
+7f36f5d1f000-7f36f5d20000 r--s 00001000 08:06 2502647                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-build-cache-http-3.4.1.jar
+7f36f5d20000-7f36f5d22000 r--s 00008000 08:06 2502610                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-antlr-3.4.1.jar
+7f36f5d22000-7f36f5d24000 r--s 00004000 08:06 2502614                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-announce-3.4.1.jar
+7f36f5d24000-7f36f5d3c000 r--s 00115000 08:06 2502716                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/xercesImpl-2.9.1.jar
+7f36f5d3c000-7f36f5d44000 r--s 00028000 08:06 2502717                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/xml-apis-1.3.04.jar
+7f36f5d44000-7f36f5d4a000 r--s 0005b000 08:06 2502715                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/jcifs-1.3.17.jar
+7f36f5d4a000-7f36f5d50000 r--s 00033000 08:06 2502663                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/commons-codec-1.6.jar
+7f36f5d50000-7f36f5d57000 r--s 00049000 08:06 2502714                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/httpcore-4.4.4.jar
+7f36f5d57000-7f36f5d5a000 r--s 0001c000 08:06 2502672                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/nekohtml-1.9.14.jar
+7f36f5d5a000-7f36f5d67000 r--s 000a4000 08:06 2502671                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/httpclient-4.4.1.jar
+7f36f5d67000-7f36f5d6a000 r--s 0000a000 08:06 2502642                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-resources-http-3.4.1.jar
+7f36f5d6a000-7f36f5d6e000 r--s 00015000 08:06 2502641                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-plugin-use-3.4.1.jar
+7f36f5d6e000-7f36f5d6f000 r--s 00000000 08:06 2502553                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/gradle-installation-beacon-3.4.1.jar
+7f36f5d6f000-7f36f5d71000 r--s 00006000 08:06 2502710                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/aether-connector-wagon-1.13.1.jar
+7f36f5d71000-7f36f5d75000 r--s 0001c000 08:06 2502709                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/aether-util-1.13.1.jar
+7f36f5d75000-7f36f5d76000 r--s 00003000 08:06 2502708                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/aether-spi-1.13.1.jar
+7f36f5d76000-7f36f5d79000 r--s 0001d000 08:06 2502707                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/aether-impl-1.13.1.jar
+7f36f5d79000-7f36f5d7c000 r--s 00013000 08:06 2502706                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/aether-api-1.13.1.jar
+7f36f5d7c000-7f36f5d7d000 r--s 00007000 08:06 2502705                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/wagon-http-shared4-2.4.jar
+7f36f5d7d000-7f36f5d7f000 r--s 0000b000 08:06 2502704                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/wagon-provider-api-2.4.jar
+7f36f5d7f000-7f36f5d80000 r--s 00002000 08:06 2502703                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/wagon-http-2.4.jar
+7f36f5d80000-7f36f5d81000 r--s 00002000 08:06 2502702                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/wagon-file-2.4.jar
+7f36f5d81000-7f36f5d83000 r--s 0000c000 08:06 2502701                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/maven-aether-provider-3.0.4.jar
+7f36f5d83000-7f36f5d85000 r--s 0000b000 08:06 2502700                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/maven-plugin-api-3.0.4.jar
+7f36f5d85000-7f36f5d87000 r--s 00006000 08:06 2502699                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/maven-repository-metadata-3.0.4.jar
+7f36f5d87000-7f36f5d89000 r--s 0000b000 08:06 2502698                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/maven-artifact-3.0.4.jar
+7f36f5d89000-7f36f5d8b000 r--s 00026000 08:06 2502697                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/maven-model-3.0.4.jar
+7f36f5d8b000-7f36f5d8f000 r--s 00021000 08:06 2502696                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/maven-model-builder-3.0.4.jar
+7f36f5d8f000-7f36f5d95000 r--s 0003f000 08:06 2502695                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/maven-compat-3.0.4.jar
+7f36f5d95000-7f36f5d96000 r--s 00006000 08:06 2502694                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/plexus-sec-dispatcher-1.3.jar
+7f36f5d96000-7f36f5d98000 r--s 00002000 08:06 2502693                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/plexus-cipher-1.7.jar
+7f36f5d98000-7f36f5d9a000 r--s 0000a000 08:06 2502692                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/plexus-classworlds-2.4.jar
+7f36f5d9a000-7f36f5da1000 r--s 0002e000 08:06 2502691                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/plexus-container-default-1.5.5.jar
+7f36f5da1000-7f36f5da3000 r--s 00000000 08:06 2502718                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/plexus-component-annotations-1.5.5.jar
+7f36f5da3000-7f36f5da5000 r--s 0000d000 08:06 2502690                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/plexus-interpolation-1.14.jar
+7f36f5da5000-7f36f5da9000 r--s 00033000 08:06 2502689                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/plexus-utils-2.0.6.jar
+7f36f5da9000-7f36f5dac000 r--s 00008000 08:06 2502688                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/maven-settings-builder-3.0.4.jar
+7f36f5dac000-7f36f5dae000 r--s 0000a000 08:06 2502687                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/maven-settings-3.0.4.jar
+7f36f5dae000-7f36f5db3000 r--s 00040000 08:06 2502673                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/jsch-0.1.53.jar
+7f36f5db3000-7f36f5df3000 r--s 00277000 08:06 2502683                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/bcprov-jdk15on-1.51.jar
+7f36f5df3000-7f36f5df7000 r--s 0001d000 08:06 2502682                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/xbean-reflect-3.4.jar
+7f36f5df7000-7f36f5e03000 r--s 0007d000 08:06 2502660                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/maven-core-3.0.4.jar
+7f36f5e03000-7f36f5e08000 r--s 00034000 08:06 2502666                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gson-2.7.jar
+7f36f5e08000-7f36f5e17000 r--s 000d9000 08:06 2502681                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/ivy-2.2.0.jar
+7f36f5e17000-7f36f5e2d000 r-xp 00000000 08:06 527687                     /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f36f5e2d000-7f36f602c000 ---p 00016000 08:06 527687                     /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f36f602c000-7f36f602d000 rw-p 00015000 08:06 527687                     /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f36f602d000-7f36f619f000 r-xp 00000000 08:06 1045025                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7f36f619f000-7f36f639f000 ---p 00172000 08:06 1045025                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7f36f639f000-7f36f63a9000 r--p 00172000 08:06 1045025                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7f36f63a9000-7f36f63ab000 rw-p 0017c000 08:06 1045025                    /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21
+7f36f63ab000-7f36f63af000 rw-p 00000000 00:00 0 
+7f36f63af000-7f36f63cf000 r--s 000fb000 08:06 2502649                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-dependency-management-3.4.1.jar
+7f36f63cf000-7f36f63d1000 r--s 00006000 08:06 2502648                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/plugins/gradle-workers-3.4.1.jar
+7f36f63d1000-7f36f63d6000 r-xp 00000000 08:06 2107574                    /home/fauxmacbook/.gradle/native/24/linux-amd64/libnative-platform.so
+7f36f63d6000-7f36f65d5000 ---p 00005000 08:06 2107574                    /home/fauxmacbook/.gradle/native/24/linux-amd64/libnative-platform.so
+7f36f65d5000-7f36f65d6000 r--p 00004000 08:06 2107574                    /home/fauxmacbook/.gradle/native/24/linux-amd64/libnative-platform.so
+7f36f65d6000-7f36f65d7000 rw-p 00005000 08:06 2107574                    /home/fauxmacbook/.gradle/native/24/linux-amd64/libnative-platform.so
+7f36f65d7000-7f36f65e8000 r-xp 00000000 08:06 1712268                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/libnio.so
+7f36f65e8000-7f36f67e7000 ---p 00011000 08:06 1712268                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/libnio.so
+7f36f67e7000-7f36f67e8000 r--p 00010000 08:06 1712268                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/libnio.so
+7f36f67e8000-7f36f67e9000 rw-p 00011000 08:06 1712268                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/libnio.so
+7f36f67e9000-7f36f6800000 r-xp 00000000 08:06 1712266                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/libnet.so
+7f36f6800000-7f36f69ff000 ---p 00017000 08:06 1712266                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/libnet.so
+7f36f69ff000-7f36f6a00000 r--p 00016000 08:06 1712266                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/libnet.so
+7f36f6a00000-7f36f6a01000 rw-p 00017000 08:06 1712266                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/libnet.so
+7f36f6a01000-7f36f6a02000 r--s 00006000 08:06 2502552                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/gradle-wrapper-3.4.1.jar
+7f36f6a02000-7f36f6a0f000 r--s 00041000 08:06 2502559                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/gradle-tooling-api-3.4.1.jar
+7f36f6a0f000-7f36f6a11000 r--s 00002000 08:06 2502579                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/gradle-open-api-3.4.1.jar
+7f36f6a11000-7f36f6a17000 r--s 00032000 08:06 2502581                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/jaxen-1.1.jar
+7f36f6a17000-7f36f6a1c000 r--s 00048000 08:06 2502580                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/dom4j-1.6.1.jar
+7f36f6a1c000-7f36f6a27000 r--s 00059000 08:06 2502558                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/gradle-ui-3.4.1.jar
+7f36f6a27000-7f36f6a30000 r--s 0008c000 08:06 2502550                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/kotlin-stdlib-1.1-M02.jar
+7f36f6a30000-7f36f6a36000 r--s 0002a000 08:06 2502549                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/kotlin-runtime-1.1-M02.jar
+7f36f6a36000-7f36f6a6a000 r--s 00256000 08:06 2502548                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/kotlin-reflect-1.1-M02.jar
+7f36f6a6a000-7f36f6c00000 r--s 0157e000 08:06 2502547                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/kotlin-compiler-embeddable-1.1-M02.jar
+7f36f6c00000-7f36f6c08000 r--s 0004e000 08:06 2502546                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/gradle-script-kotlin-0.5.1.jar
+7f36f6c08000-7f36f6c0b000 r--s 0000b000 08:06 2502577                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/gradle-resources-3.4.1.jar
+7f36f6c0b000-7f36f6c0d000 r--s 00007000 08:06 2502568                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/gradle-model-groovy-3.4.1.jar
+7f36f6c0d000-7f36f6c0f000 r--s 00006000 08:06 2502575                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/gradle-base-services-groovy-3.4.1.jar
+7f36f6c0f000-7f36f6c1e000 r--s 0007f000 08:06 2502567                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/gradle-model-core-3.4.1.jar
+7f36f6c1e000-7f36f6c1f000 r--s 00002000 08:06 2502578                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/gradle-docs-3.4.1.jar
+7f36f6c1f000-7f36f6c20000 r--s 00000000 08:06 2502574                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/javax.inject-1.jar
+7f36f6c20000-7f36f6c2d000 r--s 00083000 08:06 2502571                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/commons-collections-3.2.2.jar
+7f36f6c2d000-7f36f6c2f000 r--s 00005000 08:06 2502557                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/gradle-cli-3.4.1.jar
+7f36f6c2f000-7f36f6c31000 r--s 00007000 08:06 2502605                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/objenesis-1.2.jar
+7f36f6c31000-7f36f6c33000 r--s 00000000 08:06 2502604                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/minlog-1.2.jar
+7f36f6c33000-7f36f6c35000 r--s 0000f000 08:06 2502603                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/reflectasm-1.07-shaded.jar
+7f36f6c35000-7f36f6c3a000 r--s 00038000 08:06 2502569                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/asm-all-5.1.jar
+7f36f6c3a000-7f36f6c3e000 r--s 00026000 08:06 2502588                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/kryo-2.20.jar
+7f36f6c3e000-7f36f6c44000 r--s 00029000 08:06 2502576                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/gradle-messaging-3.4.1.jar
+7f36f6c44000-7f36f6c45000 r--s 00001000 08:06 2502602                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/native-platform-linux-i386-ncurses6-0.13.jar
+7f36f6c45000-7f36f6c46000 r--s 00001000 08:06 2502601                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/native-platform-linux-i386-ncurses5-0.13.jar
+7f36f6c46000-7f36f6c47000 r--s 00001000 08:06 2502600                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/native-platform-linux-amd64-ncurses6-0.13.jar
+7f36f6c47000-7f36f6c48000 r--s 00001000 08:06 2502599                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/native-platform-linux-amd64-ncurses5-0.13.jar
+7f36f6c48000-7f36f6c49000 r--s 0000b000 08:06 2502598                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/native-platform-windows-i386-0.13.jar
+7f36f6c49000-7f36f6c4b000 r--s 0000b000 08:06 2502597                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/native-platform-windows-amd64-0.13.jar
+7f36f6c4b000-7f36f6c4c000 r--s 00003000 08:06 2502596                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/native-platform-osx-i386-0.13.jar
+7f36f6c4c000-7f36f6c4d000 r--s 00002000 08:06 2502595                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/native-platform-osx-amd64-0.13.jar
+7f36f6c4d000-7f36f6c4e000 r--s 00002000 08:06 2502594                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/native-platform-linux-i386-0.13.jar
+7f36f6c4e000-7f36f6c4f000 r--s 00002000 08:06 2502593                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/native-platform-linux-amd64-0.13.jar
+7f36f6c4f000-7f36f6c50000 r--s 00003000 08:06 2502592                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/native-platform-freebsd-i386-libstdcpp-0.13.jar
+7f36f6c50000-7f36f6c51000 r--s 00004000 08:06 2502591                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/native-platform-freebsd-i386-libcpp-0.13.jar
+7f36f6c51000-7f36f6c52000 r--s 00004000 08:06 2502590                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/native-platform-freebsd-amd64-libstdcpp-0.13.jar
+7f36f6c52000-7f36f6c53000 r--s 00004000 08:06 2502589                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/native-platform-freebsd-amd64-libcpp-0.13.jar
+7f36f6c53000-7f36f6c54000 r--s 00000000 08:06 2502573                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/jcip-annotations-1.0.jar
+7f36f6c54000-7f36f6c58000 r--s 00011000 08:06 2502582                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/native-platform-0.13.jar
+7f36f6c58000-7f36f6c5c000 r--s 00027000 08:06 2502572                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/commons-io-2.2.jar
+7f36f6c5c000-7f36f6ccc000 r--s 00641000 08:06 2502566                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/groovy-all-2.4.7.jar
+7f36f6ccc000-7f36f6cf4000 r--s 001cf000 08:06 2502563                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/guava-jdk5-17.0.jar
+7f36f6cf4000-7f36f6d13000 r--s 001d1000 08:06 2502570                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/ant-1.9.6.jar
+7f36f6d13000-7f36f6d14000 ---p 00000000 00:00 0 
+7f36f6d14000-7f36f6e14000 rw-p 00000000 00:00 0 
+7f36f6e14000-7f36f6e17000 ---p 00000000 00:00 0 
+7f36f6e17000-7f36f6f15000 rw-p 00000000 00:00 0 
+7f36f6f15000-7f36f6f18000 ---p 00000000 00:00 0 
+7f36f6f18000-7f36f7016000 rw-p 00000000 00:00 0 
+7f36f7016000-7f36f7019000 ---p 00000000 00:00 0 
+7f36f7019000-7f36f7117000 rw-p 00000000 00:00 0 
+7f36f7117000-7f36f711a000 ---p 00000000 00:00 0 
+7f36f711a000-7f36f7218000 rw-p 00000000 00:00 0 
+7f36f7218000-7f36f721b000 ---p 00000000 00:00 0 
+7f36f721b000-7f36f7319000 rw-p 00000000 00:00 0 
+7f36f7319000-7f36f75f6000 r--p 00000000 08:06 1045593                    /usr/lib/locale/locale-archive
+7f36f75f6000-7f36f75f9000 ---p 00000000 00:00 0 
+7f36f75f9000-7f36f76f7000 rw-p 00000000 00:00 0 
+7f36f76f7000-7f36f76fa000 ---p 00000000 00:00 0 
+7f36f76fa000-7f36f77f8000 rw-p 00000000 00:00 0 
+7f36f77f8000-7f36f77f9000 ---p 00000000 00:00 0 
+7f36f77f9000-7f36f8000000 rw-p 00000000 00:00 0 
+7f36f8000000-7f36f8029000 rw-p 00000000 00:00 0 
+7f36f8029000-7f36fc000000 ---p 00000000 00:00 0 
+7f36fc000000-7f36fc021000 rw-p 00000000 00:00 0 
+7f36fc021000-7f3700000000 ---p 00000000 00:00 0 
+7f3700000000-7f3700026000 rw-p 00000000 00:00 0 
+7f3700026000-7f3704000000 ---p 00000000 00:00 0 
+7f3704000000-7f3704021000 rw-p 00000000 00:00 0 
+7f3704021000-7f3708000000 ---p 00000000 00:00 0 
+7f3708000000-7f3708003000 r--s 00023000 08:06 2502583                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/jansi-1.14.jar
+7f3708003000-7f3708006000 r--s 0000c000 08:06 2502560                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/gradle-native-3.4.1.jar
+7f3708006000-7f370800b000 r--s 0001f000 08:06 2502561                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/gradle-logging-3.4.1.jar
+7f370800b000-7f3708015000 r--s 00116000 08:06 1712224                    /home/fauxmacbook/android-studio/jre/jre/lib/ext/localedata.jar
+7f3708015000-7f3708031000 r--s 00393000 08:06 1712232                    /home/fauxmacbook/android-studio/jre/jre/lib/ext/cldrdata.jar
+7f3708031000-7f3708070000 r--s 0020c000 08:06 2502556                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/gradle-core-3.4.1.jar
+7f3708070000-7f37088fc000 rw-p 00000000 00:00 0 
+7f37088fc000-7f3708acb000 r--s 03c1b000 08:06 1712236                    /home/fauxmacbook/android-studio/jre/jre/lib/rt.jar
+7f3708acb000-7f370b541000 rw-p 00000000 00:00 0 
+7f370b541000-7f370b542000 ---p 00000000 00:00 0 
+7f370b542000-7f370b642000 rw-p 00000000 00:00 0 
+7f370b642000-7f370b643000 ---p 00000000 00:00 0 
+7f370b643000-7f370b743000 rw-p 00000000 00:00 0 
+7f370b743000-7f370b744000 ---p 00000000 00:00 0 
+7f370b744000-7f370b85d000 rw-p 00000000 00:00 0 
+7f370b85d000-7f370b99a000 ---p 00000000 00:00 0 
+7f370b99a000-7f370b9b3000 rw-p 00000000 00:00 0 
+7f370b9b3000-7f370baef000 ---p 00000000 00:00 0 
+7f370baef000-7f370bb5f000 rw-p 00000000 00:00 0 
+7f370bb5f000-7f370bb9a000 ---p 00000000 00:00 0 
+7f370bb9a000-7f370bbdf000 rw-p 00000000 00:00 0 
+7f370bbdf000-7f370bf5b000 ---p 00000000 00:00 0 
+7f370bf5b000-7f370d04b000 rwxp 00000000 00:00 0 
+7f370d04b000-7f371af5b000 ---p 00000000 00:00 0 
+7f371af5b000-7f371af75000 r-xp 00000000 08:06 1712263                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/libzip.so
+7f371af75000-7f371b175000 ---p 0001a000 08:06 1712263                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/libzip.so
+7f371b175000-7f371b176000 r--p 0001a000 08:06 1712263                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/libzip.so
+7f371b176000-7f371b177000 rw-p 0001b000 08:06 1712263                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/libzip.so
+7f371b177000-7f371b182000 r-xp 00000000 08:06 557733                     /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7f371b182000-7f371b381000 ---p 0000b000 08:06 557733                     /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7f371b381000-7f371b382000 r--p 0000a000 08:06 557733                     /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7f371b382000-7f371b383000 rw-p 0000b000 08:06 557733                     /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7f371b383000-7f371b389000 rw-p 00000000 00:00 0 
+7f371b389000-7f371b394000 r-xp 00000000 08:06 578529                     /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7f371b394000-7f371b593000 ---p 0000b000 08:06 578529                     /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7f371b593000-7f371b594000 r--p 0000a000 08:06 578529                     /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7f371b594000-7f371b595000 rw-p 0000b000 08:06 578529                     /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7f371b595000-7f371b5ab000 r-xp 00000000 08:06 522266                     /lib/x86_64-linux-gnu/libnsl-2.23.so
+7f371b5ab000-7f371b7aa000 ---p 00016000 08:06 522266                     /lib/x86_64-linux-gnu/libnsl-2.23.so
+7f371b7aa000-7f371b7ab000 r--p 00015000 08:06 522266                     /lib/x86_64-linux-gnu/libnsl-2.23.so
+7f371b7ab000-7f371b7ac000 rw-p 00016000 08:06 522266                     /lib/x86_64-linux-gnu/libnsl-2.23.so
+7f371b7ac000-7f371b7ae000 rw-p 00000000 00:00 0 
+7f371b7ae000-7f371b7b6000 r-xp 00000000 08:06 578594                     /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7f371b7b6000-7f371b9b5000 ---p 00008000 08:06 578594                     /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7f371b9b5000-7f371b9b6000 r--p 00007000 08:06 578594                     /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7f371b9b6000-7f371b9b7000 rw-p 00008000 08:06 578594                     /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7f371b9b7000-7f371b9e4000 r-xp 00000000 08:06 1712273                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/libjava.so
+7f371b9e4000-7f371bbe3000 ---p 0002d000 08:06 1712273                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/libjava.so
+7f371bbe3000-7f371bbe4000 r--p 0002c000 08:06 1712273                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/libjava.so
+7f371bbe4000-7f371bbe6000 rw-p 0002d000 08:06 1712273                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/libjava.so
+7f371bbe6000-7f371bbf6000 r-xp 00000000 08:06 1712289                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/libverify.so
+7f371bbf6000-7f371bdf5000 ---p 00010000 08:06 1712289                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/libverify.so
+7f371bdf5000-7f371bdf7000 r--p 0000f000 08:06 1712289                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/libverify.so
+7f371bdf7000-7f371bdf8000 rw-p 00011000 08:06 1712289                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/libverify.so
+7f371bdf8000-7f371bdff000 r-xp 00000000 08:06 578531                     /lib/x86_64-linux-gnu/librt-2.23.so
+7f371bdff000-7f371bffe000 ---p 00007000 08:06 578531                     /lib/x86_64-linux-gnu/librt-2.23.so
+7f371bffe000-7f371bfff000 r--p 00006000 08:06 578531                     /lib/x86_64-linux-gnu/librt-2.23.so
+7f371bfff000-7f371c000000 rw-p 00007000 08:06 578531                     /lib/x86_64-linux-gnu/librt-2.23.so
+7f371c000000-7f371cd4a000 rw-p 00000000 00:00 0 
+7f371cd4a000-7f3720000000 ---p 00000000 00:00 0 
+7f3720000000-7f3720002000 r--s 00003000 08:06 2502586                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/jcl-over-slf4j-1.7.10.jar
+7f3720002000-7f3720004000 r--s 00000000 08:06 2502584                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/jul-to-slf4j-1.7.10.jar
+7f3720004000-7f3720006000 r--s 00006000 08:06 2502565                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/gradle-process-services-3.4.1.jar
+7f3720006000-7f3720008000 r--s 00000000 08:06 2502555                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/gradle-jvm-services-3.4.1.jar
+7f3720008000-7f3720011000 r--s 00045000 08:06 2502554                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/gradle-base-services-3.4.1.jar
+7f3720011000-7f372001d000 r--s 0005a000 08:06 2502551                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/gradle-launcher-3.4.1.jar
+7f372001d000-7f372003e000 rw-p 00000000 00:00 0 
+7f372003e000-7f372003f000 ---p 00000000 00:00 0 
+7f372003f000-7f372013f000 rw-p 00000000 00:00 0 
+7f372013f000-7f3720247000 r-xp 00000000 08:06 578604                     /lib/x86_64-linux-gnu/libm-2.23.so
+7f3720247000-7f3720446000 ---p 00108000 08:06 578604                     /lib/x86_64-linux-gnu/libm-2.23.so
+7f3720446000-7f3720447000 r--p 00107000 08:06 578604                     /lib/x86_64-linux-gnu/libm-2.23.so
+7f3720447000-7f3720448000 rw-p 00108000 08:06 578604                     /lib/x86_64-linux-gnu/libm-2.23.so
+7f3720448000-7f3721039000 r-xp 00000000 08:06 1712293                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/server/libjvm.so
+7f3721039000-7f3721239000 ---p 00bf1000 08:06 1712293                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/server/libjvm.so
+7f3721239000-7f37212d8000 r--p 00bf1000 08:06 1712293                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/server/libjvm.so
+7f37212d8000-7f3721301000 rw-p 00c90000 08:06 1712293                    /home/fauxmacbook/android-studio/jre/jre/lib/amd64/server/libjvm.so
+7f3721301000-7f3721345000 rw-p 00000000 00:00 0 
+7f3721345000-7f372135d000 r-xp 00000000 08:06 578528                     /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f372135d000-7f372155c000 ---p 00018000 08:06 578528                     /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f372155c000-7f372155d000 r--p 00017000 08:06 578528                     /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f372155d000-7f372155e000 rw-p 00018000 08:06 578528                     /lib/x86_64-linux-gnu/libpthread-2.23.so
+7f372155e000-7f3721562000 rw-p 00000000 00:00 0 
+7f3721562000-7f3721565000 r-xp 00000000 08:06 578592                     /lib/x86_64-linux-gnu/libdl-2.23.so
+7f3721565000-7f3721764000 ---p 00003000 08:06 578592                     /lib/x86_64-linux-gnu/libdl-2.23.so
+7f3721764000-7f3721765000 r--p 00002000 08:06 578592                     /lib/x86_64-linux-gnu/libdl-2.23.so
+7f3721765000-7f3721766000 rw-p 00003000 08:06 578592                     /lib/x86_64-linux-gnu/libdl-2.23.so
+7f3721766000-7f3721926000 r-xp 00000000 08:06 578609                     /lib/x86_64-linux-gnu/libc-2.23.so
+7f3721926000-7f3721b26000 ---p 001c0000 08:06 578609                     /lib/x86_64-linux-gnu/libc-2.23.so
+7f3721b26000-7f3721b2a000 r--p 001c0000 08:06 578609                     /lib/x86_64-linux-gnu/libc-2.23.so
+7f3721b2a000-7f3721b2c000 rw-p 001c4000 08:06 578609                     /lib/x86_64-linux-gnu/libc-2.23.so
+7f3721b2c000-7f3721b30000 rw-p 00000000 00:00 0 
+7f3721b30000-7f3721b46000 r-xp 00000000 08:06 1712153                    /home/fauxmacbook/android-studio/jre/lib/amd64/jli/libjli.so
+7f3721b46000-7f3721d45000 ---p 00016000 08:06 1712153                    /home/fauxmacbook/android-studio/jre/lib/amd64/jli/libjli.so
+7f3721d45000-7f3721d46000 r--p 00015000 08:06 1712153                    /home/fauxmacbook/android-studio/jre/lib/amd64/jli/libjli.so
+7f3721d46000-7f3721d47000 rw-p 00016000 08:06 1712153                    /home/fauxmacbook/android-studio/jre/lib/amd64/jli/libjli.so
+7f3721d47000-7f3721d6d000 r-xp 00000000 08:06 557671                     /lib/x86_64-linux-gnu/ld-2.23.so
+7f3721d6d000-7f3721d72000 r--s 00041000 08:06 2502564                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/commons-lang-2.6.jar
+7f3721d72000-7f3721e43000 rw-p 00000000 00:00 0 
+7f3721e43000-7f3721e46000 ---p 00000000 00:00 0 
+7f3721e46000-7f3721f48000 rw-p 00000000 00:00 0 
+7f3721f48000-7f3721f49000 r--s 00005000 08:06 2502585                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/log4j-over-slf4j-1.7.10.jar
+7f3721f49000-7f3721f4a000 r--s 00000000 08:06 2502720                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/gradle-version-info-3.4.1.jar
+7f3721f4a000-7f3721f4b000 r--s 00007000 08:06 2502562                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/slf4j-api-1.7.10.jar
+7f3721f4b000-7f3721f4c000 r--s 00004000 08:06 2502587                    /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/ant-launcher-1.9.6.jar
+7f3721f4c000-7f3721f60000 rw-p 00000000 00:00 0 
+7f3721f60000-7f3721f68000 rw-s 00000000 08:06 3396089                    /tmp/hsperfdata_fauxmacbook/16047
+7f3721f68000-7f3721f69000 rw-p 00000000 00:00 0 
+7f3721f69000-7f3721f6a000 ---p 00000000 00:00 0 
+7f3721f6a000-7f3721f6c000 rw-p 00000000 00:00 0 
+7f3721f6c000-7f3721f6d000 r--p 00025000 08:06 557671                     /lib/x86_64-linux-gnu/ld-2.23.so
+7f3721f6d000-7f3721f6e000 rw-p 00026000 08:06 557671                     /lib/x86_64-linux-gnu/ld-2.23.so
+7f3721f6e000-7f3721f6f000 rw-p 00000000 00:00 0 
+7fffd63f0000-7fffd6411000 rw-p 00000000 00:00 0                          [stack]
+7fffd6511000-7fffd6513000 r--p 00000000 00:00 0                          [vvar]
+7fffd6513000-7fffd6515000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+jvm_args: -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError -Xmx1024m -Dfile.encoding=UTF-8 -Duser.country=FR -Duser.language=fr -Duser.variant 
+java_command: org.gradle.launcher.daemon.bootstrap.GradleDaemon 3.4.1
+java_class_path (initial): /home/fauxmacbook/.gradle/wrapper/dists/gradle-3.4.1-all/c3ib5obfnqr0no9szq6qc17do/gradle-3.4.1/lib/gradle-launcher-3.4.1.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=/usr/lib/jvm/java-8-oracle
+PATH=/home/fauxmacbook/bin:/home/fauxmacbook/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
+SHELL=/bin/bash
+DISPLAY=:0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x9e5150], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0x9e5150], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x848450], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x848450], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x848450], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x848450], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x848320], sa_mask[0]=00100000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: [libjvm.so+0x848510], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGINT: [libjvm.so+0x848510], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGTERM: [libjvm.so+0x848510], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.so+0x848510], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=16.04
+DISTRIB_CODENAME=xenial
+DISTRIB_DESCRIPTION="Ubuntu 16.04.3 LTS"
+
+uname:Linux 4.4.0-97-generic #120-Ubuntu SMP Tue Sep 19 17:28:18 UTC 2017 x86_64
+libc:glibc 2.23 NPTL 2.23 
+rlimit: STACK 8192k, CORE 0k, NPROC 14984, NOFILE 1048576, AS infinity
+load average:25,32 13,24 5,54
+
+/proc/meminfo:
+MemTotal:        3937312 kB
+MemFree:          245836 kB
+MemAvailable:     167432 kB
+Buffers:            1580 kB
+Cached:           465020 kB
+SwapCached:            0 kB
+Active:          3041716 kB
+Inactive:         456384 kB
+Active(anon):    3036580 kB
+Inactive(anon):   415260 kB
+Active(file):       5136 kB
+Inactive(file):    41124 kB
+Unevictable:          64 kB
+Mlocked:              64 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:                 4 kB
+Writeback:             0 kB
+AnonPages:       3032216 kB
+Mapped:           182908 kB
+Shmem:            419688 kB
+Slab:              86516 kB
+SReclaimable:      44288 kB
+SUnreclaim:        42228 kB
+KernelStack:       10560 kB
+PageTables:        47544 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     1968656 kB
+Committed_AS:    7794628 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:   1509376 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:      147048 kB
+DirectMap2M:     2889728 kB
+DirectMap1G:     1048576 kB
+
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 78 stepping 3, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 78
+model name	: Intel(R) Core(TM) m3-6Y30 CPU @ 0.90GHz
+stepping	: 3
+microcode	: 0xba
+cpu MHz		: 796.640
+cache size	: 4096 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 2
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch epb intel_pt tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs		:
+bogomips	: 3023.85
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 78
+model name	: Intel(R) Core(TM) m3-6Y30 CPU @ 0.90GHz
+stepping	: 3
+microcode	: 0xba
+cpu MHz		: 776.425
+cache size	: 4096 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 2
+apicid		: 2
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch epb intel_pt tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs		:
+bogomips	: 3023.85
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 78
+model name	: Intel(R) Core(TM) m3-6Y30 CPU @ 0.90GHz
+stepping	: 3
+microcode	: 0xba
+cpu MHz		: 794.882
+cache size	: 4096 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 2
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch epb intel_pt tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs		:
+bogomips	: 3023.85
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 78
+model name	: Intel(R) Core(TM) m3-6Y30 CPU @ 0.90GHz
+stepping	: 3
+microcode	: 0xba
+cpu MHz		: 797.285
+cache size	: 4096 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 2
+apicid		: 3
+initial apicid	: 3
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch epb intel_pt tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs		:
+bogomips	: 3023.85
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 3937312k(245464k free), swap 0k(0k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.112-b06) for linux-amd64 JRE (1.8.0_112-release-b06), built on Dec  6 2016 12:11:18 by "builder" with gcc 4.8.4
+
+time: Tue Oct 24 22:16:54 2017
+elapsed time: 252 seconds (0d 0h 4m 12s)
+
