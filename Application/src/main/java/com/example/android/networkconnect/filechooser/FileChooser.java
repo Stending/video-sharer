@@ -74,6 +74,7 @@ public class FileChooser extends ListActivity {
             dir.add(0,new MyItem("..","Parent Directory","",f.getParent(),"directory_up"));
         adapter = new FileArrayAdapter(FileChooser.this, R.layout.file_chooser_list,dir);
         this.setListAdapter(adapter);
+
     }
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
@@ -94,8 +95,10 @@ public class FileChooser extends ListActivity {
         //Toast.makeText(this, "Folder Clicked: "+ currentDir, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent();
         intent.putExtra("GetPath",currentDir.toString());
-        intent.putExtra("GetFileName",o.getName());
+        intent.putExtra("GetFilePath",o.getName());
         setResult(RESULT_OK, intent);
         finish();
     }
+
+
 }

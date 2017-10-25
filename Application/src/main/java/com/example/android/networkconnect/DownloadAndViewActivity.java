@@ -10,9 +10,14 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.MediaController;
+import android.widget.Toast;
 import android.widget.VideoView;
+
+import com.example.android.networkconnect.filechooser.FileExplorerActivity;
 
 import java.io.File;
 
@@ -23,8 +28,43 @@ public class DownloadAndViewActivity extends FragmentActivity implements Downloa
     // as necessary.
     private VideoView mDataView;
     private String path = "https://ia800201.us.archive.org/22/items/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4";
+    private String defaultRepertory = "/data/user/0/com.example.android.networkconnect/cache/";
     private EditText mDLURLtextField ;
     private String tempFilePath;
+
+    private Button mButtonToFileChooser;
+    private Button mButtonToShareWithBluetoothActivity;
+
+    private Intent mIntentFileChoose;
+    private Intent mIntentShare;
+    private View.OnClickListener clkLstnr =new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch(v.getId()){
+                case R.id.button_DL:
+                    Intent mIntent = new Intent(getApplicationContext(), DownloadAndViewActivity.class);
+                    startActivity(mIntent);
+                    break;
+                case R.id.button_STREAM:
+                    Intent mIntentStream = new Intent(getApplicationContext(), GetStreamActivity.class);
+                    startActivity(mIntentStream);
+                    break;
+                case R.id.button_filechooser:
+
+                    startActivity(mIntentFileChoose);
+                    break;
+
+                case R.id.button_share_with_paired:
+                    Log.d("COUCOU", "starting share activity");
+                    startActivity(mIntentShare);
+                    break;
+
+
+            }
+
+        }
+    };
+
     // Keep a reference to the NetworkFragment which owns the AsyncTask object
     // that is used to execute network ops.
     private NetworkFragment mNetworkFragment;
@@ -44,10 +84,17 @@ public class DownloadAndViewActivity extends FragmentActivity implements Downloa
         // Set it as the media controller for the VideoView object.
         mDataView= (VideoView) findViewById(R.id.video);
         mDataView.setMediaController(vidControl);
-
+        mIntentFileChoose = new Intent(getApplicationContext(), FileExplorerActivity.class);
+        mIntentShare = new Intent(getApplicationContext(), ShareWithPairedDevicesActivity.class);
         mDLURLtextField = (EditText)findViewById(R.id.mediaURL);
         mDLURLtextField.setText(path);
 //        mDataVideo = (VideoView) findViewById(R.id.video);
+
+        mButtonToFileChooser = (Button) findViewById(R.id.button_filechooser);
+        mButtonToFileChooser.setOnClickListener(clkLstnr);
+
+        mButtonToShareWithBluetoothActivity = (Button) findViewById(R.id.button_share_with_paired);
+        mButtonToShareWithBluetoothActivity.setOnClickListener(clkLstnr);
 
         mNetworkFragment = NetworkFragment.getInstance(getSupportFragmentManager(), path);
     }
@@ -79,9 +126,20 @@ public class DownloadAndViewActivity extends FragmentActivity implements Downloa
                 startActivity(mIntent);
                 return true;
 
+            case R.id.clear_folder_action:
+                clearFolder();
+                return true;
+
 
         }
         return false;
+    }
+
+    private void clearFolder() {
+        File folder = new File(defaultRepertory);
+        for(File entry : folder.listFiles()){
+            entry.delete();
+        }
     }
 
     private void startDownload() {
@@ -136,4 +194,24 @@ public class DownloadAndViewActivity extends FragmentActivity implements Downloa
                 break;
         }
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Intent intent = getIntent();
+        Log.d("COUCOU", "entering onResume");
+        if(intent.getExtras()!=null){
+            Log.d("COUCOU", "Extras not null");
+            if(!intent.getStringExtra("GetFilePath").equals("")){
+                Log.d("COUCOU", intent.getStringExtra("GetFilePath"));
+                Toast.makeText(this, ("You are playing : "+intent.getStringExtra("GetFilePath")), Toast.LENGTH_SHORT).show();
+                mDataView.setVideoPath(defaultRepertory+intent.getStringExtra("GetFilePath"));
+                mDataView.start();
+            }
+        }
+
+    }
+
+
 }

@@ -1,4 +1,4 @@
-#Wed Oct 25 17:15:09 CEST 2017
+#Wed Oct 25 22:12:22 CEST 2017
 base.0=/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_bf8674ff03b49c4da15f6be025c30f494b8b98f5
 renamed.1=classes2.dex
 renamed.0=classes.dex

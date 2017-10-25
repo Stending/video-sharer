@@ -43,7 +43,8 @@ public class MainActivity extends FragmentActivity  {
 
     private Button mButtonToDownLoadActivity;
     private Button mButtonToGetStreamingActivity;
-    private Button mButtonToFileChooser;
+    private Button mButtonToBlueToothActivity;
+
     private View.OnClickListener clkLstnr =new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -60,6 +61,11 @@ public class MainActivity extends FragmentActivity  {
                     Intent mIntentFileChoose= new Intent(getApplicationContext(), FileExplorerActivity.class);
                     startActivity(mIntentFileChoose);
                     break;
+
+                case R.id.button_BT:
+                    Intent mIntentBT= new Intent(getApplicationContext(), BlueToothActivity.class);
+                    startActivity(mIntentBT);
+                    break;
             }
 
         }
@@ -75,8 +81,9 @@ public class MainActivity extends FragmentActivity  {
         mButtonToDownLoadActivity.setOnClickListener(clkLstnr);
         mButtonToGetStreamingActivity = (Button) findViewById(R.id.button_STREAM);
         mButtonToGetStreamingActivity.setOnClickListener(clkLstnr);
-        mButtonToFileChooser = (Button) findViewById(R.id.button_filechooser);
-        mButtonToFileChooser.setOnClickListener(clkLstnr);
+        mButtonToBlueToothActivity = (Button) findViewById(R.id.button_BT);
+        mButtonToBlueToothActivity.setOnClickListener(clkLstnr);
+
     }
 
     @Override

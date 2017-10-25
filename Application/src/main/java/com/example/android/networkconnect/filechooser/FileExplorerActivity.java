@@ -6,6 +6,8 @@ package com.example.android.networkconnect.filechooser;
         import android.view.View;
         import android.widget.EditText;
 
+        import com.example.android.networkconnect.DownloadAndViewActivity;
+        import com.example.android.networkconnect.MainActivity;
         import com.example.android.networkconnect.R;
 
 public class FileExplorerActivity extends Activity {
@@ -29,6 +31,12 @@ public class FileExplorerActivity extends Activity {
         // See which child activity is calling us back.
         if (requestCode == REQUEST_PATH){
             if (resultCode == RESULT_OK) {
+                Intent intent = getIntent();
+
+                Intent downloadIntent = new Intent(getApplicationContext(), DownloadAndViewActivity.class);
+                downloadIntent.putExtra("GetFilePath", data.getStringExtra("GetFilePath"));
+                downloadIntent.putExtra("GetPath", data.getStringExtra("GetPath"));
+                startActivity(downloadIntent);
                 curFileName = data.getStringExtra("GetFileName");
                 edittext.setText(curFileName);
             }

@@ -6,27 +6,37 @@
     density="xxhdpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1508945013685"
+    timestamp="1508962817342"
     token="-1828959284668364187"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="434" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="24" />
     <task
         name="verifier"
-        duration="0" />
+        duration="1" />
+
+    <artifact
+        location="/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/build/intermediates/split-apk/debug/slices/slice_2.apk"
+        type="SPLIT" />
+    <artifact
+        location="/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/build/outputs/apk/Application-debug.apk"
+        type="SPLIT_MAIN" />
 
     <build
         build-mode="FULL"
-        timestamp="1508944188584"
+        timestamp="1508962340518"
         verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/build/outputs/apk/Application-debug.apk"
+            type="SPLIT_MAIN" />
         <artifact
             location="/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/build/intermediates/split-apk/debug/slices/slice_5.apk"
             type="SPLIT" />
@@ -60,39 +70,25 @@
         <artifact
             location="/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1508962725707"
+        verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/build/outputs/apk/Application-debug.apk"
             type="SPLIT_MAIN" />
     </build>
     <build
         build-mode="COLD"
-        timestamp="1508944500305"
+        timestamp="1508962817342"
         verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/build/intermediates/split-apk/debug/slices/slice_3.apk"
-            type="SPLIT" />
         <artifact
             location="/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/build/intermediates/split-apk/debug/slices/slice_2.apk"
             type="SPLIT" />
         <artifact
-            location="/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/build/intermediates/split-apk/debug/slices/slice_5.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/build/intermediates/split-apk/debug/slices/slice_9.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/build/intermediates/split-apk/debug/slices/slice_7.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/build/intermediates/split-apk/debug/slices/slice_4.apk"
-            type="SPLIT" />
-        <artifact
             location="/home/fauxmacbook/Téléchargements/connection/android-NetworkConnect-master/Application/build/outputs/apk/Application-debug.apk"
             type="SPLIT_MAIN" />
     </build>
-    <build
-        build-mode="COLD"
-        timestamp="1508945013685"
-        verifier="COLD_SWAP_REQUESTED" />
 
 </instant-run>

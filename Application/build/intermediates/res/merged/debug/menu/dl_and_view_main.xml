@@ -24,4 +24,7 @@
     <item android:id="@+id/back_action"
         android:showAsAction="ifRoom|withText"
         android:title="@string/back_text" />
+    <item android:id="@+id/clear_folder_action"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/clear_folder_text" />
 </menu>
