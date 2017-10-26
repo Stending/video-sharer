@@ -31,10 +31,11 @@ public class BlueToothActivity extends Activity {
     private Set<BluetoothDevice> pairedDevices;
     private ListView myListView;
     private ArrayAdapter<String> BTArrayAdapter;
-    private static String DEBUGING = "BOURDEL";
+    private static String DEBUGING = "COUCOUBT";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(DEBUGING, "entering onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bluetooth_main);
 
@@ -103,6 +104,7 @@ public class BlueToothActivity extends Activity {
     }
 
     public void on(View view){
+        Log.d(DEBUGING, "entering on");
         if (!myBluetoothAdapter.isEnabled()) {
             Intent turnOnIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(turnOnIntent, REQUEST_ENABLE_BT);
@@ -118,6 +120,7 @@ public class BlueToothActivity extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d(DEBUGING, "entering onActivityResult");
         // TODO Auto-generated method stub
         if(requestCode == REQUEST_ENABLE_BT){
             if(myBluetoothAdapter.isEnabled()) {
@@ -129,6 +132,7 @@ public class BlueToothActivity extends Activity {
     }
 
     public void list(View view){
+        Log.d(DEBUGING, "entering list");
         // get paired devices
         pairedDevices = myBluetoothAdapter.getBondedDevices();
 
@@ -143,6 +147,7 @@ public class BlueToothActivity extends Activity {
 
     final BroadcastReceiver bReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
+            Log.d(DEBUGING, "entering bReceiver.onReceive");
             String action = intent.getAction();
             // When discovery finds a device
             if (BluetoothDevice.ACTION_FOUND.equals(action)) {
@@ -157,6 +162,7 @@ public class BlueToothActivity extends Activity {
     };
 
     public void find(View view) {
+        Log.d(DEBUGING, "entering find");
         if (myBluetoothAdapter.isDiscovering()) {
             // the button is pressed when it discovers, so cancel the discovery
             myBluetoothAdapter.cancelDiscovery();
@@ -170,6 +176,7 @@ public class BlueToothActivity extends Activity {
     }
 
     public void off(View view){
+        Log.d(DEBUGING, "entering off");
         myBluetoothAdapter.disable();
         text.setText("Status: Disconnected");
 
@@ -179,9 +186,15 @@ public class BlueToothActivity extends Activity {
 
     @Override
     protected void onDestroy() {
+        Log.d(DEBUGING, "entering onDestroy");
         // TODO Auto-generated method stub
         super.onDestroy();
-        unregisterReceiver(bReceiver);
+        try{
+            unregisterReceiver(bReceiver);
+        }catch(IllegalArgumentException e){
+            Log.e(DEBUGING, " là ça peut planter si on a pas fait de recherche d'appareils, si Vincent voyait ça il me mettrait une claque");
+        }
+
     }
 
 }

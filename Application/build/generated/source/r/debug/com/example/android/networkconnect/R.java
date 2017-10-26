@@ -2390,7 +2390,7 @@ containing a value of this type.
         public static final int alignMargins=0x7f0b0027;
         public static final int always=0x7f0b003e;
         public static final int async=0x7f0b0020;
-        public static final int back_action=0x7f0b009e;
+        public static final int back_action=0x7f0b009f;
         public static final int beginning=0x7f0b0036;
         public static final int blocking=0x7f0b0021;
         public static final int bottom=0x7f0b0028;
@@ -2406,8 +2406,8 @@ containing a value of this type.
         public static final int center_vertical=0x7f0b002b;
         public static final int checkbox=0x7f0b005c;
         public static final int chronometer=0x7f0b0094;
-        public static final int clear_action=0x7f0b009d;
-        public static final int clear_folder_action=0x7f0b009f;
+        public static final int clear_action=0x7f0b009e;
+        public static final int clear_folder_action=0x7f0b00a0;
         public static final int clip_horizontal=0x7f0b002c;
         public static final int clip_vertical=0x7f0b002d;
         public static final int collapseActionView=0x7f0b003f;
@@ -2424,7 +2424,7 @@ containing a value of this type.
         public static final int expand_activities_button=0x7f0b0047;
         public static final int expanded_menu=0x7f0b005b;
         public static final int fd_Icon1=0x7f0b007d;
-        public static final int fetch_action=0x7f0b009c;
+        public static final int fetch_action=0x7f0b009d;
         public static final int fill=0x7f0b002f;
         public static final int fill_horizontal=0x7f0b0030;
         public static final int fill_vertical=0x7f0b0031;
@@ -2446,7 +2446,7 @@ containing a value of this type.
         public static final int list_item=0x7f0b004a;
         public static final int mediaURL=0x7f0b0079;
         public static final int media_actions=0x7f0b008e;
-        public static final int message=0x7f0b009b;
+        public static final int message=0x7f0b009c;
         public static final int middle=0x7f0b0037;
         public static final int multiply=0x7f0b0018;
         public static final int never=0x7f0b0041;
@@ -2499,6 +2499,7 @@ containing a value of this type.
         public static final int text2=0x7f0b000b;
         public static final int textSpacerNoButtons=0x7f0b0053;
         public static final int textSpacerNoTitle=0x7f0b0052;
+        public static final int text_file_name=0x7f0b009b;
         public static final int textview=0x7f0b0081;
         public static final int time=0x7f0b0093;
         public static final int title=0x7f0b000c;

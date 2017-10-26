@@ -56,6 +56,7 @@ public class DownloadAndViewActivity extends FragmentActivity implements Downloa
 
                 case R.id.button_share_with_paired:
                     Log.d("COUCOU", "starting share activity");
+                    mIntentShare.putExtra("GetFilePath",getIntent().getStringExtra("GetFilePath"));
                     startActivity(mIntentShare);
                     break;
 

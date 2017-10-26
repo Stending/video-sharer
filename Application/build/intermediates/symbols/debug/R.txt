@@ -642,7 +642,7 @@ int id alignBounds 0x7f0b0026
 int id alignMargins 0x7f0b0027
 int id always 0x7f0b003e
 int id async 0x7f0b0020
-int id back_action 0x7f0b009e
+int id back_action 0x7f0b009f
 int id beginning 0x7f0b0036
 int id blocking 0x7f0b0021
 int id bottom 0x7f0b0028
@@ -658,8 +658,8 @@ int id center_horizontal 0x7f0b002a
 int id center_vertical 0x7f0b002b
 int id checkbox 0x7f0b005c
 int id chronometer 0x7f0b0094
-int id clear_action 0x7f0b009d
-int id clear_folder_action 0x7f0b009f
+int id clear_action 0x7f0b009e
+int id clear_folder_action 0x7f0b00a0
 int id clip_horizontal 0x7f0b002c
 int id clip_vertical 0x7f0b002d
 int id collapseActionView 0x7f0b003f
@@ -676,7 +676,7 @@ int id end_padder 0x7f0b009a
 int id expand_activities_button 0x7f0b0047
 int id expanded_menu 0x7f0b005b
 int id fd_Icon1 0x7f0b007d
-int id fetch_action 0x7f0b009c
+int id fetch_action 0x7f0b009d
 int id fill 0x7f0b002f
 int id fill_horizontal 0x7f0b0030
 int id fill_vertical 0x7f0b0031
@@ -698,7 +698,7 @@ int id listView1 0x7f0b0078
 int id list_item 0x7f0b004a
 int id mediaURL 0x7f0b0079
 int id media_actions 0x7f0b008e
-int id message 0x7f0b009b
+int id message 0x7f0b009c
 int id middle 0x7f0b0037
 int id multiply 0x7f0b0018
 int id never 0x7f0b0041
@@ -751,6 +751,7 @@ int id text 0x7f0b000a
 int id text2 0x7f0b000b
 int id textSpacerNoButtons 0x7f0b0053
 int id textSpacerNoTitle 0x7f0b0052
+int id text_file_name 0x7f0b009b
 int id textview 0x7f0b0081
 int id time 0x7f0b0093
 int id title 0x7f0b000c
