@@ -1,12 +1,15 @@
 package com.example.android.networkconnect;
 
 
+import android.app.ActionBar;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -18,6 +21,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.networkconnect.bluetoothchat.BluetoothChatService;
+import com.example.android.networkconnect.bluetoothchat.Constants;
+
 import java.util.Set;
 
 public class GetStreamActivity extends FragmentActivity {
@@ -26,6 +32,7 @@ public class GetStreamActivity extends FragmentActivity {
     private Button onBtn;
     private Button offBtn;
     private Button listBtn;
+    private Button askbtn;
 
     private TextView text;
 
@@ -34,6 +41,11 @@ public class GetStreamActivity extends FragmentActivity {
     private ListView myListView;
     private ArrayAdapter<String> BTArrayAdapter;
     private static String DEBUGING = "COUCOUBT";
+
+
+    private String mConnectedDeviceName = null;
+    private StringBuffer mOutStringBuffer;
+    private BluetoothChatService mChatService = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +96,17 @@ public class GetStreamActivity extends FragmentActivity {
                 }
             });
 
+            askbtn= (Button)findViewById(R.id.askForFile);
+            askbtn.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    String message = "file plz";
+                    Log.d(DEBUGING, " message sent: " + message);
+                    mChatService.write(message.getBytes());
+
+                }
+            });
+
 
             myListView = (ListView)findViewById(R.id.listView1);
 
@@ -97,7 +120,17 @@ public class GetStreamActivity extends FragmentActivity {
 
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                    String BTname =BTArrayAdapter.getItem(position);
+                    String macAddress = BTname.substring(BTname.lastIndexOf("\n"));
+                    Log.d(DEBUGING, BTname);
+                    Log.d(DEBUGING, macAddress);
+                    Log.d(DEBUGING, String.valueOf(macAddress.length()));
+                    macAddress = macAddress.substring(1, 18);
+                    Log.d(DEBUGING, macAddress);
+                    Log.d(DEBUGING, String.valueOf(macAddress.length()));
+                    BluetoothDevice device = myBluetoothAdapter.getRemoteDevice(macAddress);
+                    // Attempt to connect to the device
+                    mChatService.connect(device, true);
                 }
             });
         }
@@ -171,6 +204,112 @@ public class GetStreamActivity extends FragmentActivity {
                 Toast.LENGTH_LONG).show();
     }
 
+    private void setupChat() {
+
+
+        // Initialize the BluetoothChatService to perform bluetooth connections
+        mChatService = new BluetoothChatService(this, mHandler);
+
+        // Initialize the buffer for outgoing messages
+        mOutStringBuffer = new StringBuffer("");
+    }
+
+    /**
+     * Updates the status on the action bar.
+     *
+     * @param resId a string resource ID
+     */
+    private void setStatus(int resId) {
+        FragmentActivity activity = this;
+        if (null == activity) {
+            return;
+        }
+        final ActionBar actionBar = activity.getActionBar();
+        if (null == actionBar) {
+            return;
+        }
+        actionBar.setSubtitle(resId);
+    }
+
+    /**
+     * Updates the status on the action bar.
+     *
+     * @param subTitle status
+     */
+    private void setStatus(CharSequence subTitle) {
+        FragmentActivity activity = this;
+        if (null == activity) {
+            return;
+        }
+        final ActionBar actionBar = activity.getActionBar();
+        if (null == actionBar) {
+            return;
+        }
+        actionBar.setSubtitle(subTitle);
+    }
+
+    /**
+     * The Handler that gets information back from the BluetoothChatService
+     */
+    private final Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            FragmentActivity activity = GetStreamActivity.this;
+            switch (msg.what) {
+                case Constants.MESSAGE_STATE_CHANGE:
+                    switch (msg.arg1) {
+                        case BluetoothChatService.STATE_CONNECTED:
+                            setStatus(getString(R.string.title_connected_to, mConnectedDeviceName));
+
+                            break;
+                        case BluetoothChatService.STATE_CONNECTING:
+                            setStatus(R.string.title_connecting);
+                            break;
+                        case BluetoothChatService.STATE_LISTEN:
+                        case BluetoothChatService.STATE_NONE:
+                            setStatus(R.string.title_not_connected);
+                            break;
+                    }
+                    break;
+                case Constants.MESSAGE_WRITE:
+                    byte[] writeBuf = (byte[]) msg.obj;
+                    // construct a string from the buffer
+                    String writeMessage = new String(writeBuf);
+
+                    break;
+                case Constants.MESSAGE_READ:
+                    byte[] readBuf = (byte[]) msg.obj;
+                    // construct a string from the valid bytes in the buffer
+                    String readMessage = new String(readBuf, 0, msg.arg1);
+
+                    break;
+                case Constants.MESSAGE_DEVICE_NAME:
+                    // save the connected device's name
+                    mConnectedDeviceName = msg.getData().getString(Constants.DEVICE_NAME);
+                    if (null != activity) {
+                        Toast.makeText(activity, "Connected to "
+                                + mConnectedDeviceName, Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                case Constants.MESSAGE_TOAST:
+                    if (null != activity) {
+                        Toast.makeText(activity, msg.getData().getString(Constants.TOAST),
+                                Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+            }
+        }
+    };
+
+
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        if (mChatService == null) {
+            setupChat();
+        }
+    }
     @Override
     protected void onDestroy() {
         Log.d(DEBUGING, "entering onDestroy");
